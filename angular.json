@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "BIIA"
+    }
+  },
+  "defaultProject": "BIIA",
+  "cli": {
+    "analytics": false
+  }
 }

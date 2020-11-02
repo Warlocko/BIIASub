@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+$purple: rgba(108,49,247,1);
+$light-green: rgba(0,191,181,1);
+$orange: rgba(248,137,32,1);
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #121D23;
+}
+
+.lightGreenText{
+    color: $light-green;
+}
+
+.lightGreenBackground{
+    background-color: $light-green;
+}
+
+.purpleText{
+    color: $purple;
+}
+
+.purpleBackground{
+    background-color: $purple;
+}
+
+.orangeText{
+    color: $orange;
+}
+
+.orangeBackground{
+    background-color: $orange;
+}
+
+.bold{
+    font-weight: 700;
+}
+
+.strong{
+    font-weight: 500;
+}
