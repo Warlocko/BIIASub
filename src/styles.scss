@@ -1,11 +1,60 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$BIIA-primary: mat-palette($mat-indigo);
+$BIIA-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$BIIA-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$BIIA-theme: mat-light-theme((
+  color: (
+    primary: $BIIA-primary,
+    accent: $BIIA-accent,
+    warn: $BIIA-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($BIIA-theme);
+
 /* You can add global styles to this file, and also import other style files */
 $purple: rgba(108,49,247,1);
 $light-green: rgba(0,191,181,1);
 $orange: rgba(248,137,32,1);
+$darkGrey: rgba(255,255,255,0.7);
+$lightGrey: rgba(255,255,255,0.3);
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
 
 body{
     font-family: 'Roboto', sans-serif;
     background-color: #121D23;
+    color: white;
+    overflow-x: hidden;
 }
 
 .lightGreenText{
@@ -32,10 +81,75 @@ body{
     background-color: $orange;
 }
 
+.darkGreyText{
+    color: $darkGrey;
+}
+
+.lightGreyText{
+    color: $lightGrey;
+}
+
+.centerText{
+    text-align: center;
+}
+
+.titleText{
+    font-size: 40px;
+    letter-spacing: 3px;
+}
+
+.normalText{
+    font-size: 20px;
+}
+
+.smallText{
+    font-size: 16px;
+}
+
+.text14{
+    font-size: 14px;
+}
+
+.text12{
+    font-size: 12px;
+}
+
+.robotoMono{
+    font-family: 'Roboto Mono', monospace;
+}
+
 .bold{
     font-weight: 700;
 }
 
 .strong{
     font-weight: 500;
+}
+
+.underlined{
+    text-decoration: underline;
+}
+
+.right{
+    text-align: right;
+}
+
+app-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+app-signup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+button{
+    cursor: pointer;
 }

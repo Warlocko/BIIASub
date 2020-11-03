@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "biia-ab56e": {
+      "hosting": {
+        "BIIA": [
+          "biia-ab56e"
+        ]
+      }
+    }
+  }
+}

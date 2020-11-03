@@ -1,0 +1,19 @@
+<img src="../../../../assets/img/loginBG.png" class="loginBG">
+<img src="../../../../assets/img/logoWhite.png" class="loginLogo">
+    <p class="lightGreyText smallText loginText">Inicio de sesión</p>
+    <p class="strong loginTitle">Que gusto verte de nuevo</p>
+    <div class="inputContainer" *ngIf="!mailLogin">
+        <p class="smallText">Elige con que iniciar sesión:</p>
+        <button style="background-color: rgba(255,61,45,1);"><i class="fab fa-google"></i>Google</button>
+        <button style="background-color: rgba(27,72,171,1);"><i class="fab fa-facebook-f"></i>Facebook</button>
+        <button style="background-color: rgba(21,20,20,1);" (click)="toggleMail()"><i class="fas fa-envelope"></i>Correo</button>
+    </div>
+    <div class="mailInputContainer" *ngIf="mailLogin">
+        <p class="smallText">Ingresa tu correo y contraseña</p>
+        <input type="text" placeholder="Correo" class="text14" #email>
+        <input type="password" placeholder="Contraseña" class="text14" #password>
+        <p class="text12 underlined">¿Olvidaste tu contraseña?</p>
+        <button class="text14 bold loginBtn lightGreenBackground" (click)="Login(email.value,password.value)">Iniciar Sesión</button>
+    </div>
+    <a class="lightGreenText bold signupLink" routerLink="/signup">No tengo cuenta</a>
+    <p class="darkGreyText smallText rightsText">BIIA. Todos los derechos reservados. 2020</p>
