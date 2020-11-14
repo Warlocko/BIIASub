@@ -1,2 +1,59 @@
-<p>Bienvenido al Dashboard</p>
-<button (click)="onLogout()">Cerrar Sesión</button>
+<app-navbar [currentTab]=0></app-navbar>
+<div class="dashboard-container">
+    <div id="paypal-warning" *ngIf=noPaypal>
+        <p class="darkGreyText smallText">Aun no has agregado una cuenta de pagos.<br><a routerLink="/perfil"><b>Agrégala aquí</b></a></p>
+    </div>
+    <div id="cash-containers">
+        <div class="ganancia-display" id="ganancia-disp">
+            <p class="info-ganancia smallText"><i class="far fa-question-circle"></i>¿Qué es esto?</p>
+            <p class="normalText ganancia-text">$<span class="bigText bold">{{gDisp}}</span><br><span class="smallText mediumGreyText">Ganancia Disponible</span></p>
+        </div>
+        <div class="ganancia-display" id="ganancia-pen">
+            <p class="info-ganancia smallText"><i class="far fa-question-circle"></i>¿Qué es esto?</p>
+            <p class="normalText ganancia-text">$<span class="bigText bold">{{gPen}}</span><br><span class="smallText mediumGreyText">Ganancia Pendiente</span></p>
+        </div>
+        <div class="ganancia-display" id="ganancia-tot">
+            <p class="info-ganancia smallText"><i class="far fa-question-circle"></i>¿Qué es esto?</p>
+            <p class="normalText ganancia-text">$<span class="bigText bold">{{gTot}}</span><br><span class="smallText mediumGreyText">Ganancia Total</span></p>
+        </div>
+    </div>
+    <div id="lower-info">
+        <div id="reembolsos-container">
+            <div class="lower-info-header">
+                <p class="lower-info-title bold">Reembolsos</p>
+            </div>
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <p class="mediumGreyText">Broker</p>
+                    <p class="mediumGreyText">Ticket</p>
+                    <p class="mediumGreyText">Reembolso</p>
+                    <p class="mediumGreyText">Tiempo de Cierre</p>
+                </div>
+                <div class="table-row">
+                    <p class=""><img src="../../../assets/img/fbsLogo.png" class="table-img">FBS</p>
+                    <p class="">1sBjVmODKN3rwY4EIRbH</p>
+                    <p class="">0.129</p>
+                    <p class="">12 sep 2020 a las 20:20</p>
+                </div>
+            </div>
+        </div>
+        <div id="cuentas-container">
+            <div class="lower-info-header">
+                <p class="lower-info-title bold">Cuentas</p>
+                <p class="lightGreenText smalltext" id="cuenta-add">+ Añadir Cuenta</p>
+            </div>
+            <div class="cuentas-info">
+                <div class="cuenta">
+                    <div class="smallText"><img src="../../../assets/img/primusLogo.png" class="cuenta-img"><p><b>FXPRIMUS</b><br>8261282</p></div>
+                    <p class="smallText">$<span class="cuenta-number">10.00</span><br><span class="mediumGreyText">Ganancia</span></p>
+                </div>
+                <div class="cuenta">
+                    <div class="smallText"><img src="../../../assets/img/primusLogo.png" class="cuenta-img"><p><b>FXPRIMUS</b><br>8261282</p></div>
+                    <p class="smallText mediumGreyText">$<span class="cuenta-number">10.00</span><br><span class="orangeText">Esperando Aprobación</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+

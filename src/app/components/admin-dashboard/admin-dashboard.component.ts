@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { FirestoreAdminService } from 'src/app/services/firestore-admin.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  constructor(public firebaseAuth : AngularFireAuth, private router: Router, private firestore: FirestoreAdminService) { }
+  constructor(public firebaseAuth : AngularFireAuth, private router: Router, public firestore: FirestoreAdminService) { }
 
   ngOnInit(): void {
   }

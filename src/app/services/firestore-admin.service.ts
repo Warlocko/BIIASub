@@ -17,7 +17,10 @@ export class FirestoreAdminService {
             .set({
               name: data.name,
               email: data.email,
-              role: 'user'
+              role: 'user',
+              gDisp: 0,
+              gPen: 0,
+              gTot: 0
             }).then(res => {resolve(res)}, err => reject(err));
     });
   }
@@ -32,5 +35,7 @@ export class FirestoreAdminService {
             .then(res => {resolve(res.data())}, err => reject(err));
     });
   }
+
+  
 
 }

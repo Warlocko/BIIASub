@@ -4,7 +4,7 @@
     <p class="strong loginTitle">Que gusto verte de nuevo</p>
     <div class="inputContainer" *ngIf="!mailLogin">
         <p class="smallText">Elige con que iniciar sesión:</p>
-        <button style="background-color: rgba(255,61,45,1);"><i class="fab fa-google"></i>Google</button>
+        <button style="background-color: rgba(255,61,45,1);" (click)="LoginWithGoogle()"><i class="fab fa-google"></i>Google</button>
         <button style="background-color: rgba(27,72,171,1);"><i class="fab fa-facebook-f"></i>Facebook</button>
         <button style="background-color: rgba(21,20,20,1);" (click)="toggleMail()"><i class="fas fa-envelope"></i>Correo</button>
     </div>

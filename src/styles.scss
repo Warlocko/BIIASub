@@ -38,7 +38,9 @@ $purple: rgba(108,49,247,1);
 $light-green: rgba(0,191,181,1);
 $orange: rgba(248,137,32,1);
 $darkGrey: rgba(255,255,255,0.7);
+$mediumGrey: rgba(255,255,255,0.5);
 $lightGrey: rgba(255,255,255,0.3);
+$black: rgba(7,11,13,1);
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
     margin: 0;
@@ -85,8 +87,16 @@ body{
     color: $darkGrey;
 }
 
+.mediumGreyText{
+    color: $mediumGrey;
+}
+
 .lightGreyText{
     color: $lightGrey;
+}
+
+.blackBackground{
+    background-color: $black;
 }
 
 .centerText{
@@ -96,6 +106,10 @@ body{
 .titleText{
     font-size: 40px;
     letter-spacing: 3px;
+}
+
+.bigText{
+    font-size: 40px;
 }
 
 .normalText{
@@ -150,6 +164,30 @@ app-signup{
     height: 100vh;
 }
 
+app-navbar{
+    position: fixed;
+    z-index: 100;
+}
+
 button{
+    cursor: pointer;
+}
+
+.dashNavbar{
+    position: fixed;
+    height: 75px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(7,11,13,1);
+}
+
+.dashNavbar p{
+    font-family: 'Roboto Mono', monospace;
+    line-height: 75px;
+    margin-left: 10px;
+}
+
+a{
     cursor: pointer;
 }

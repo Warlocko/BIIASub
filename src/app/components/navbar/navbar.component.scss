@@ -1,0 +1,60 @@
+.navbar-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-image{
+    position: relative;
+    height: 60%;
+    width: 25px;
+    margin-left: 5%;
+}
+
+.navbar-title{
+    position: relative;
+    margin-left: 10px;
+}
+
+.navbar-links{
+    position: relative;
+    display: flex;
+    margin-left: 5%;
+    height: 100%;
+    align-items: center;
+}
+
+.navbar-link{
+    display: inline-block;
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 60px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-user{
+    position: absolute;
+    right: 30px;
+}
+
+.navbar-name{
+    position: relative;
+    text-decoration: none;
+}
+
+.navbar-selected{
+    border-top: solid 3px rgba(0,191,181,1);
+    color: rgba(0,191,181,1);
+}
+
+.navbar-icon{
+    margin-left: 15px;
+}
+

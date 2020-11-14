@@ -80,6 +80,13 @@
     z-index: 0;
 }
 
+.loginBtn{
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .linkBtn{
     padding: 12px 20px;
     border-radius: 10px;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { FirestoreAdminService } from 'src/app/services/firestore-admin.service';
+import { FireauthService } from 'src/app/services/fireauth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { FirestoreAdminService } from 'src/app/services/firestore-admin.service'
 export class LoginComponent implements OnInit {
   mailLogin : boolean = false;
 
-  constructor(public firebaseAuth : AngularFireAuth, private router: Router, private firestore: FirestoreAdminService) { }
+  constructor(public firebaseAuth : AngularFireAuth, private router: Router, private firestore: FirestoreAdminService, public fireauth: FireauthService) { }
 
   ngOnInit(): void {
   }
@@ -25,13 +26,20 @@ export class LoginComponent implements OnInit {
       var uid = user.user.uid
       this.firestore.getUserRecord(uid).then(data => {
         console.log(data)
-        if(data.role=='user'){
-          this.router.navigate(['/dashboard'])
-        }else if(data.role=='admin'){
+        if(data.role=='admin'){
           this.router.navigate(['/admin'])
+        }else {
+          this.router.navigate(['/dashboard'])
         }
       })
       
+    })
+  }
+
+  LoginWithGoogle(){
+    console.log("google")
+    this.fireauth.googleSignIn().then(user => {
+      this.router.navigate(['/dashboard'])
     })
   }
 

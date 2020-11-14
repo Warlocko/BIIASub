@@ -1,0 +1,34 @@
+<app-navbar [currentTab]=4></app-navbar>
+<div id="profile-wrapper">
+    <p class="profile-title bold">MI PERFIL</p>
+    <div class="profile-subtitle">
+        <p class="bold">Mis Datos</p>
+    </div>
+    <div class="user-info-container">
+        <div class="info">
+            <p class="info-name smallText">Nombre:</p>
+            <p class="info-text">{{name}}</p>
+            <i class="far fa-edit"></i>
+        </div>
+        <div class="info">
+            <p class="info-name smallText">Email:</p>
+            <p class="info-text">{{email}}</p>
+            <i class="far fa-edit"></i>
+        </div>
+        <div class="info">
+            <p class="info-name smallText">Contraseña:</p>
+            <p class="info-text">***************</p>
+            <i class="far fa-edit"></i>
+        </div>
+        <button class="profile-info-save lightGreenBackground smallText bold">Guardar</button>
+    </div>
+    <div class="profile-subtitle">
+        <p class="bold">Cuenta de Pagos</p>
+    </div>
+    <div class="paypal-container">
+        <img src="../../../assets/img/paypalLogo.png" class="paypal-img">
+        <p class="paypal-account">paypal.me/account</p>
+        <p class="lightGreenText paypal-change">Cambiar</p>
+    </div>
+    <button (click)="onLogout()" class="text14 bold logoutBtn lightGreenBackground">Cerrar Sesión</button>
+</div>

@@ -11,7 +11,14 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FirestoreAdminService} from './services/firestore-admin.service';
-import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component'
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { BrokersComponent } from './components/brokers/brokers.component';
+import { AcademiasComponent } from './components/academias/academias.component';
+import { QuestionsComponent } from './components/questions/questions.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { AdminCuentasComponent } from './components/admin-cuentas/admin-cuentas.component';
+import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +27,14 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    NavbarComponent,
+    BrokersComponent,
+    AcademiasComponent,
+    QuestionsComponent,
+    ProfileComponent,
+    AdminCuentasComponent,
+    AdminNavbarComponent
   ],
   imports: [
     BrowserModule,

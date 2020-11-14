@@ -1,0 +1,62 @@
+.brokers-wrapper{
+    padding: 100px 25px 0;
+}
+
+.brokers-title{
+    font-size: 35px;
+    letter-spacing: 3px;
+    padding-left: 50px;
+}
+
+#brokers-container{
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.broker{
+    position: relative;
+    margin: 0 25px 60px;
+    border-radius: 10px;
+    width: calc(50% - 50px);
+    background-color: rgba(12,20,24,1);
+}
+
+.broker-header{
+    position: relative;
+    height: 100px;
+    background-color: rgba(9,15,19,1);
+    display: flex;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.broker-img{
+    width: 100px;
+    height: 100px;
+    margin-top: -60px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.broker-name{
+    font-size: 25px;
+}
+
+.cuenta-add{
+    position: absolute;
+    right: 30px;
+    text-align: right;
+}
+
+pre{
+    font-family: 'Roboto', monospace;
+    padding: 20px;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;      
+    white-space: -o-pre-wrap;    
+    word-wrap: break-word; 
+    line-height: 24px;
+}
+
