@@ -1,0 +1,113 @@
+.cuentas-wrapper{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cuentas-searchbar-container{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    padding: 25px 20px;
+    border-top: .5px solid rgba(255,255,255,.3);
+    border-bottom: .5px solid rgba(255,255,255,.3);
+    background-color: rgba(12,20,24,1);
+}
+
+.cuentas-searchbar{
+    background-color: transparent;
+    border-radius: 5px;
+    display: flex;
+    position: absolute;
+    right: 50px;
+    padding: 15px;
+    width: 350px;
+}
+
+.cuentas-searchbar input{
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+    color: white;
+    text-align: right;
+    width: 90%;
+}
+
+.cuentas-searchbar input::placeholder{
+    font-size: 14px;
+    color: rgba(255,255,255,0.3);
+}
+
+.cuentas-searchbar i{
+    position: absolute;
+    right: 15px;
+    font-size: 16px;
+}
+
+.cuentas-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+.cuentas-table{
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.cuentas-header{
+    width: calc(100% - 50px);
+    background-color: rgba(12,20,24,1);
+    display: flex;
+    padding: 13px 25px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.cuentas-header p{
+    width: calc(100%/6);
+    color: rgba(255,255,255,.5);
+    font-size: 14px;
+}
+
+.cuentas-row{
+    width: calc(100% - 50px);
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 13px 25px;
+    background-color: rgba(12,20,24,1);
+}
+
+.cuentas-row p{
+    width: calc(100%/6);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.cuenta-img{
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+
+.icons-container{
+    display: flex;
+    position: absolute;
+    right: 40px;
+}
+
+.icons-container i{
+    font-size: 20px;
+    margin-left: 15px;
+    color: rgba(123,132,136,1);
+}

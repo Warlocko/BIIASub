@@ -54,12 +54,27 @@
     border: none;
 }
 
+.text-field{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.text-field i{
+    position: absolute;
+    left: 20px;
+    font-size: 20px;
+    color: rgba(123,132,136,1);
+}
+
 input{
     border: 2px solid rgba(233,235,235,1);
-    margin-bottom: 15px;
     height: 45px;
     border-radius: 5px;
     padding-left: 50px;
+    width: 100%;
 }
 
 ::placeholder{

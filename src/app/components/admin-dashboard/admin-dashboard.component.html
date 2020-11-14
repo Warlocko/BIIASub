@@ -1,4 +1,102 @@
-<div class="dashNavbar">
-    <p class="titleText">Administrador</p>
+<app-admin-navbar [currentTab]=0></app-admin-navbar>
+<div id="dashboard-wrapper">
+    <div class="dashboard-tabs">
+        <p class="tab first-tab selected-tab smallText" id="pendientes" (click)="showPendientes()">Pendientes</p>
+        <p class="tab smallText" id="realizados" (click)="showRealizados()">Realizados</p>
+        <div class="tabs-searchbar">
+            <input type=text placeholder="Buscar Pago">
+            <i class="fas fa-search"></i>
+        </div>
+    </div>
+    <div class="dashboard-container" *ngIf="pendientes">
+        <p class="lightGreenText bold smallText dashboard-link">Marcar elementos seleccionados como completados</p>
+        <div class="dashboard-table">
+            <div class="dashboard-header">
+                <p>Usuario</p>
+                <p>Correo</p>
+                <p>Reembolso</p>
+                <p>Fecha</p>
+                <p>Hora</p>
+            </div>
+            <div class="dashboard-row">
+                <p>Carlos Aguirre Orozco</p>
+                <p>carlos.aguirreorozco@gmail.com</p>
+                <p>$1,023.29</p>
+                <p>12 de septiembre de 2020</p>
+                <p>09:08 PM</p>
+                <div class="checkbox-container">
+                    <img src="../../../assets/img/paypalGrey.png" class="paypal-logo">
+                    <div class="dashboard-checkbox selected"></div>
+                </div>
+            </div>
+            <div class="dashboard-row">
+                <p>Carlos Aguirre Orozco</p>
+                <p>carlos.aguirreorozco@gmail.com</p>
+                <p>$1,023.29</p>
+                <p>12 de septiembre de 2020</p>
+                <p>09:08 PM</p>
+                <div class="checkbox-container">
+                    <img src="../../../assets/img/paypalGrey.png" class="paypal-logo">
+                    <div class="dashboard-checkbox"></div>
+                </div>
+            </div>
+            <div class="dashboard-row">
+                <p>Carlos Aguirre Orozco</p>
+                <p>carlos.aguirreorozco@gmail.com</p>
+                <p>$1,023.29</p>
+                <p>12 de septiembre de 2020</p>
+                <p>09:08 PM</p>
+                <div class="checkbox-container">
+                    <img src="../../../assets/img/paypalGrey.png" class="paypal-logo">
+                    <div class="dashboard-checkbox selected"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-container" *ngIf="realizados">
+        <p class="bold smallText dashboard-link-red">Marcar elementos seleccionados como completados</p>
+        <div class="dashboard-table">
+            <div class="dashboard-header">
+                <p>Usuario</p>
+                <p>Correo</p>
+                <p>Reembolso</p>
+                <p>Fecha</p>
+                <p>Hora</p>
+            </div>
+            <div class="dashboard-row">
+                <p>Carlos Aguirre Orozco</p>
+                <p>carlos.aguirreorozco@gmail.com</p>
+                <p>$1,023.29</p>
+                <p>12 de septiembre de 2020</p>
+                <p>09:08 PM</p>
+                <div class="checkbox-container">
+                    <img src="../../../assets/img/paypalGrey.png" class="paypal-logo">
+                    <div class="dashboard-checkbox selected-red"></div>
+                </div>
+            </div>
+            <div class="dashboard-row">
+                <p>Carlos Aguirre Orozco</p>
+                <p>carlos.aguirreorozco@gmail.com</p>
+                <p>$1,023.29</p>
+                <p>12 de septiembre de 2020</p>
+                <p>09:08 PM</p>
+                <div class="checkbox-container">
+                    <img src="../../../assets/img/paypalGrey.png" class="paypal-logo">
+                    <div class="dashboard-checkbox"></div>
+                </div>
+            </div>
+            <div class="dashboard-row">
+                <p>Carlos Aguirre Orozco</p>
+                <p>carlos.aguirreorozco@gmail.com</p>
+                <p>$1,023.29</p>
+                <p>12 de septiembre de 2020</p>
+                <p>09:08 PM</p>
+                <div class="checkbox-container">
+                    <img src="../../../assets/img/paypalGrey.png" class="paypal-logo">
+                    <div class="dashboard-checkbox selected-red"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <button class="text14 bold logoutBtn lightGreenBackground" (click)="onLogout()">Cerrar Sesión</button>

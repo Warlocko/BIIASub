@@ -10,9 +10,9 @@
     </div>
     <div class="mailInputContainer" *ngIf="mailSignup">
         <p class="smallText">Ingresa tus datos</p>
-        <input type="text" placeholder="Nombre" class="text14" name="name" #name>
-        <input type="text" placeholder="Correo" class="text14" name="email" #email>
-        <input type="password" placeholder="Contraseña" class="text14" name="password" #password>
+        <div class="text-field"><i class="fas fa-user"></i><input type="text" placeholder="Nombre" class="text14 bold" name="name" #name></div>
+        <div class="text-field"><i class="fas fa-envelope"></i><input type="text" placeholder="Correo" class="text14 bold" name="email" #email></div>
+        <div class="text-field"><i class="fas fa-key"></i><input type="password" placeholder="Contraseña" class="text14 bold" name="password" #password></div>
         <button class="text14 bold loginBtn lightGreenBackground" (click)="createUser(name.value, email.value, password.value)">Crear cuenta</button>
     </div>
     <p class="lightGreenText bold loginLink" routerLink="/login">Ya tengo cuenta</p>

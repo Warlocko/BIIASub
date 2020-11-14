@@ -10,8 +10,8 @@
     </div>
     <div class="mailInputContainer" *ngIf="mailLogin">
         <p class="smallText">Ingresa tu correo y contraseña</p>
-        <input type="text" placeholder="Correo" class="text14" #email>
-        <input type="password" placeholder="Contraseña" class="text14" #password>
+        <div class="text-field"><i class="fas fa-envelope"></i><input type="text" placeholder="Correo" class="text14 bold" #email></div>
+        <div class="text-field"><i class="fas fa-key"></i><input type="password" placeholder="Contraseña" class="text14 bold" #password></div>
         <p class="text12 underlined">¿Olvidaste tu contraseña?</p>
         <button class="text14 bold loginBtn lightGreenBackground" (click)="Login(email.value,password.value)">Iniciar Sesión</button>
     </div>

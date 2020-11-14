@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       this.firestore.getUserRecord(uid).then(data => {
         console.log(data)
         if(data.role=='admin'){
-          this.router.navigate(['/admin'])
+          this.router.navigate(['/admin/reembolsos'])
         }else {
           this.router.navigate(['/dashboard'])
         }

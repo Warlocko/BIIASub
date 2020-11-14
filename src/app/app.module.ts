@@ -18,7 +18,10 @@ import { AcademiasComponent } from './components/academias/academias.component';
 import { QuestionsComponent } from './components/questions/questions.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AdminCuentasComponent } from './components/admin-cuentas/admin-cuentas.component';
-import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component'
+import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
+import { AdminBrokersComponent } from './components/admin-brokers/admin-brokers.component';
+import { AdminAcademiasComponent } from './components/admin-academias/admin-academias.component';
+import { AdminQuestionsComponent } from './components/admin-questions/admin-questions.component'
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.com
     QuestionsComponent,
     ProfileComponent,
     AdminCuentasComponent,
-    AdminNavbarComponent
+    AdminNavbarComponent,
+    AdminBrokersComponent,
+    AdminAcademiasComponent,
+    AdminQuestionsComponent
   ],
   imports: [
     BrowserModule,

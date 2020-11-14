@@ -10,6 +10,10 @@ import { BrokersComponent } from './components/brokers/brokers.component'
 import { AcademiasComponent } from './components/academias/academias.component'
 import { QuestionsComponent } from './components/questions/questions.component'
 import { ProfileComponent } from './components/profile/profile.component';
+import { AdminCuentasComponent } from './components/admin-cuentas/admin-cuentas.component';
+import { AdminBrokersComponent } from './components/admin-brokers/admin-brokers.component';
+import { AdminQuestionsComponent } from './components/admin-questions/admin-questions.component';
+import { AdminAcademiasComponent } from './components/admin-academias/admin-academias.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login'])
 
@@ -18,11 +22,15 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin}},
-  {path: 'admin', component: AdminDashboardComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'brokers', component: BrokersComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'academias', component: AcademiasComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'faq', component: QuestionsComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin}},
   {path: 'perfil', component: ProfileComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'admin/reembolsos', component: AdminDashboardComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'admin/cuentas', component: AdminCuentasComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'admin/brokers', component: AdminBrokersComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'admin/academias', component: AdminAcademiasComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin}},
+  {path: 'admin/faq', component: AdminQuestionsComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin}},
 ];
 
 @NgModule({
