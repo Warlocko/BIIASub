@@ -92,3 +92,155 @@
     right: 20px;
     top: 30px;
 }
+
+.academias-form{
+    padding: 35px 70px;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    width: 860px;
+}
+
+.academias-form-row{
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.text-fields-column{
+    margin-left: 20px;
+    width: 40%;
+}
+
+.text-area-column{
+    width: 100%;
+}
+
+.academias-form input, .academias-form label{
+    display: block;
+    font-size: 14px;
+}
+
+.academias-form input, .academias-form textarea{
+    background-color: rgba(12,20,24,1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 14px 20px;
+    color: white;
+    border-radius: 5px;
+    width: calc(100% - 41.6px);
+    margin-top: 6px;
+    margin-bottom: 20px;
+}
+
+textarea{
+    width: calc(100% - 41.6px);
+    height: 107px;
+    word-wrap: break-word;
+    font-family: 'Roboto', monospace;
+    font-size: 14px;
+}
+
+input::placeholder, textarea::placeholder{
+    color: rgba(255,255,255,0.3);
+}
+
+.dropzone{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    width: 160px;
+    font-weight: 200;
+    height: 160px;
+    border-radius: 5px;
+    background: rgba(12,20,24,1);
+    margin: 0;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.img-icon{
+    color: rgba(255,255,255,0.3);
+    font-size: 50px;
+}
+
+.form-title{
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.form-subtitle{
+    font-size: 21px;
+    margin: 10px 0 30px;
+}
+
+.add-plan{
+    position: absolute;
+    right: 0;
+    top: 14px;
+    font-family: 'Lato', monospace;
+}
+
+.academias-table{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.academias-table-header{
+    width: calc(100% - 50px);
+    background-color: rgba(12,20,24,1);
+    display: flex;
+    padding: 13px 25px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.academias-table-header p{
+    width: calc(100%/4);
+    color: rgba(255,255,255,.5);
+    font-size: 14px;
+}
+
+.academias-table-row{
+    width: calc(100% - 50px);
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 13px 25px;
+    background-color: rgba(12,20,24,1);
+}
+
+.academias-table-row p{
+    width: calc(100%/4);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.academias-table-row a{
+    position: absolute;
+    right: 25px;
+}
+
+.delete-button{
+    width: 280px;
+    background-color: transparent;
+    border: 2px solid rgba(255,61,45,1);
+    color: rgba(255,61,45,1);
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 13px 0;
+}
+
+.save-button{
+    width: 580px;
+    margin-left: 20px;
+    border-radius: 5px;
+    background-color: rgba(0,191,181,1);
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 13px 0;
+}

@@ -21,7 +21,9 @@ import { AdminCuentasComponent } from './components/admin-cuentas/admin-cuentas.
 import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
 import { AdminBrokersComponent } from './components/admin-brokers/admin-brokers.component';
 import { AdminAcademiasComponent } from './components/admin-academias/admin-academias.component';
-import { AdminQuestionsComponent } from './components/admin-questions/admin-questions.component'
+import { AdminQuestionsComponent } from './components/admin-questions/admin-questions.component';
+import { FileDropDirective } from '../app/directives/file-drop.directive';
+import { AppearDirective } from './directives/appear.directive'
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { AdminQuestionsComponent } from './components/admin-questions/admin-ques
     AdminNavbarComponent,
     AdminBrokersComponent,
     AdminAcademiasComponent,
-    AdminQuestionsComponent
+    AdminQuestionsComponent,
+    FileDropDirective,
+    AppearDirective
   ],
   imports: [
     BrowserModule,

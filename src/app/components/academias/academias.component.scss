@@ -1,4 +1,4 @@
-#academias-wrapper{
+.academias-wrapper{
     padding-top: 60px;
     display: flex;
     flex-direction: column;
@@ -48,6 +48,7 @@
 .academia-img{
     width: 100%;
     height: 100%;
+    border-radius: 50px;
 }
 
 .academia-discount{
@@ -62,7 +63,8 @@
 .academia-name{
     font-size: 25px;
     letter-spacing: 3px;
-    margin-top: 20px;
+    margin-top: 30px;
+    text-align: center;
 }
 
 .academia-text{
@@ -73,4 +75,130 @@
 .academia-link{
     margin-top: 20px;
     text-decoration: underline;
+}
+
+.academias-searchbar-container{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    padding: 25px 20px;
+    border-top: .5px solid rgba(255,255,255,.3);
+    border-bottom: .5px solid rgba(255,255,255,.3);
+    background-color: rgba(12,20,24,1);
+}
+
+.show-academias{
+    font-family: 'Lato', sans-serif;
+    margin-left: 5%;
+}
+
+.academia-details{
+    position: relative;
+    display: flex;
+    padding: 20px 50px;
+    width: calc(100% - 100px);
+}
+
+.academia-column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 50px;
+    width: 410px;
+}
+
+.academia-header{
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    width: 100%;
+}
+
+.academia-header p{
+    font-size: 25px;
+    line-height: 32px;
+    letter-spacing: 3px;
+}
+
+.academia-detail-img{
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    border-radius: 50px;
+}
+
+.academia-body{
+    width: 100%;
+}
+
+.plan-list{
+    width: 65%;
+}
+
+.plan{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.plan-header{
+    display: flex;
+    position: relative;
+    padding: 20px;
+    background-color: rgba(7,11,13,0.5);
+    border-radius: 10px;
+}
+
+.plan-name,.plan-discount{
+    font-size: 25px;
+    text-transform: capitalize;
+}
+
+.plan-numbers{
+    position: absolute;
+    display: flex;
+    right: 25px;
+}
+
+.plan-original-price{
+    font-size: 12px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.plan-body{
+    background-color: rgba(7,11,13,0.5);
+    border-radius: 10px;
+    margin-top: -70px;
+    padding: 90px 50px 20px;
+    width: calc(100% - 100px);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.plan-bullet{
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.show-more-text{
+    position: absolute;
+    text-decoration: underline;
+    bottom: 30px;
+    right: 25px;
+    cursor: pointer;
+}
+
+.plan-link{
+    position: absolute;
+    padding: 10px 15px;
+    border-radius: 10px;
+    bottom: -20px;
+    right: 20px;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 4px;
+    font-weight: 500;
 }

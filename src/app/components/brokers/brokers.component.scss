@@ -1,8 +1,14 @@
 .brokers-wrapper{
-    padding: 100px 25px 0;
+    position: relative;
+    padding: 60px 25px 0;
+}
+
+b{
+    text-transform: capitalize;
 }
 
 .brokers-title{
+    margin-top: 40px;
     font-size: 35px;
     letter-spacing: 3px;
     padding-left: 50px;
@@ -47,6 +53,7 @@
     position: absolute;
     right: 30px;
     text-align: right;
+    cursor: pointer;
 }
 
 pre{
@@ -58,5 +65,152 @@ pre{
     white-space: -o-pre-wrap;    
     word-wrap: break-word; 
     line-height: 24px;
+}
+
+.add-account-wrapper{
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    height: 60px;
+    margin-left: -25px;
+    background-color: rgba(12,20,24,1);
+    width: calc(100% - 50px);
+    border-top: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    margin-bottom: 20px;
+}
+
+.add-broker-info{
+    display: flex;
+    align-items: center;
+    height: 100px;
+    padding: 0 25px;
+    margin-bottom: 30px;
+}
+
+.add-broker-img{
+    height: 100px;
+    width: 100px;
+    margin-right: 20px;
+}
+
+.add-broker-body{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.step, .step-full{
+    padding: 0 25px;
+    margin-bottom: 30px;
+    width: calc(50% - 50px);
+}
+
+.step-full{
+    width: calc(100% - 50px);
+}
+
+.step-label{
+    border-radius: 10px 10px 0 0;
+    width: 60px;
+    margin-left: 10px;
+    padding: 6px 25px;
+    background-color: rgba(0,191,181,1);
+}
+
+.disabled .step-label{
+    background-color: rgba(123,132,136,1);
+}
+
+.step-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 25px;
+    width: calc(100% - 25px);
+    min-height: 200px;
+    background-color: rgba(12,20,24,1);
+}
+
+.step-title{
+    font-size: 25px;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.step-btn{
+    width: 60%;
+    background-color: rgba(0,191,181,1);
+    font-size: 20px;
+    padding: 11px 0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.step-checkbox{
+    width: 20px;
+    height: 20px;
+    background-color: rgba(12,20,24,1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.step-checkbox.checked{
+    background-color: rgba(0,191,181,1) !important;
+}
+
+.step input[type="text"]{
+    width: 310px;
+    background-color: rgba(12,20,24,1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 13px 20px;
+    color: white;
+    border-radius: 5px;
+}
+
+.step input[type="text"]::placeholder{
+    color: rgba(255,255,255,0.3)
+}
+
+.disabled{
+    opacity: .6;
+}
+
+.step-3-email-container{
+    width: 60%;
+}
+
+.step-3-email{
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.email-header{
+    background-color: rgba(24,32,36,1);
+    width: 100%;
+    padding: 20px 25px;
+}
+
+.email-header p{
+    margin-bottom: 5px;
+}
+
+#email-btn{
+    position: relative;
+    width: 40%;
+    margin-left: 60%;
+    font-size: 16px;
+}
+
+.disabled #email-btn{
+    background-color: rgba(123,132,136,1);
+    cursor: default;
 }
 

@@ -1,53 +1,72 @@
 <app-admin-navbar [currentTab]=1></app-admin-navbar>
 <div class="cuentas-wrapper">
     <div class="cuentas-searchbar-container">
-        <div class="cuentas-searchbar">
+        <p class="tab chosen-tab" id="cuentas" (click)="togglePagos('cuentas')">Cuentas</p>
+        <p class="tab" id="pagos" (click)="togglePagos('pagos')">Pagos</p>
+        <div class="cuentas-searchbar" *ngIf="!showPagos">
             <input type=text placeholder="Buscar cuenta, ticket o usuario">
             <i class="fas fa-search"></i>
         </div>
+        <div class="cuentas-searchbar" *ngIf="showPagos">
+            <input type=text placeholder="Buscar pago">
+            <i class="fas fa-search"></i>
+        </div>
     </div>
-    <div class="cuentas-container">
+    <div class="cuentas-container" *ngIf="!showPagos">
         <div class="cuentas-table">
             <div class="cuentas-header">
                 <p>Broker</p>
                 <p>Usuario</p>
                 <p>Cuenta</p>
-                <p>Ticket</p>
-                <p>Tiempo de Cierre</p>
+                <p>Ganancia</p>
+                <p>Tiempo de Creación</p>
             </div>
-            <div class="cuentas-row">
-                <p><img src="../../../assets/img/fbsLogo.png" class="cuenta-img">FBS</p>
-                <p>Carlos Aguirre Orozco</p>
-                <p>8125678367</p>
-                <p>1sBjVmODKN3rwY4EIRbH</p>
-                <p>12 sep 2020 a las 20:20</p>
+            <div class="cuentas-row" *ngFor="let account of accountsList">
+                <p class="cuenta-column"><img src="{{account.brokerPath}}" class="cuenta-img">{{account.broker}}</p>
+                <p class="cuenta-column">{{account.name}}</p>
+                <p class="cuenta-column">{{account.accountID}}</p>
+                <p class="cuenta-column">$ {{account.balance}}</p>
+                <p class="cuenta-column">{{account.time}}</p>
                 <div class="icons-container">
-                    <i class="fas fa-envelope"></i>
-                    <i class="fas fa-ellipsis-v"></i>
-                </div>  
-            </div>
-            <div class="cuentas-row">
-                <p><img src="../../../assets/img/fbsLogo.png" class="cuenta-img">FBS</p>
-                <p>Carlos Aguirre Orozco</p>
-                <p>8125678367</p>
-                <p>1sBjVmODKN3rwY4EIRbH</p>
-                <p>12 sep 2020 a las 20:20</p>
-                <div class="icons-container">
-                    <i class="fas fa-envelope"></i>
-                    <i class="fas fa-ellipsis-v"></i>
-                </div>  
-            </div>
-            <div class="cuentas-row">
-                <p><img src="../../../assets/img/fbsLogo.png" class="cuenta-img">FBS</p>
-                <p>Carlos Aguirre Orozco</p>
-                <p>8125678367</p>
-                <p>1sBjVmODKN3rwY4EIRbH</p>
-                <p>12 sep 2020 a las 20:20</p>
-                <div class="icons-container">
-                    <i class="fas fa-envelope"></i>
-                    <i class="fas fa-ellipsis-v"></i>
+                    <p class="lightGreenText smallText clickable" *ngIf="!account.isActive" (click)="activateAccount(account.id)">Activar</p>
+                    <p class="smallText" *ngIf="account.isActive">Activada</p>
+                    <p class="lightGreenText normalText clickable" (click)="toggleEditModal(account.id,account.userID,account.balance,account.name,account.accountID)" *ngIf="account.isActive">+</p>
                 </div>  
             </div>
         </div>
     </div>
+    <div class="pagos-container" *ngIf="showPagos">
+        <div class="pagos-table">
+            <div class="pagos-header">
+                <p>Usuario</p>
+                <p>Cuenta</p>
+                <p>Ganancia Previa</p>
+                <p>Ganancia Nueva</p>
+                <p>Tiempo de Cambio</p>
+            </div>
+            <div class="pagos-row" *ngFor="let pago of pagosList">
+                <p class="pagos-column">{{pago.user}}</p>
+                <p class="pagos-column">{{pago.userRef}}</p>
+                <p class="pagos-column">$ {{pago.userBalancePrev}}</p>
+                <p class="pagos-column">$ {{pago.userBalanceNew}}</p>
+                <p class="pagos-column">{{pago.time}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" *ngIf="showBalanceModal">
+    <div class="modal-background" (click)='toggleEditModal("","")'></div>
+        <div class="edit-modal">
+            <div class="edit-header" (click)='toggleEditModal("","")'>
+                <p class="smallText"><i class="fas fa-arrow-left" style="margin-right: 15px;"></i>Cancelar</p>
+            </div>
+            <div class="edit-body">
+                <p class="bold modal-title">Editar Ganancia</p>
+                <div class="edit-input">
+                    <label class="modal-label" for="edit">Ganancia</label>
+                    <input type="text" placeholder="Ingresa nuevo valor" [value]="accountBalance" name="edit" id="edit" class="bold" #edit>
+                </div>
+                <button class="text14 bold edit-btn lightGreenBackground" id="edit-save" (click)="saveBalance(accountID,edit.value)">Guardar</button>
+            </div>
+        </div>
 </div>

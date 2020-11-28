@@ -8,27 +8,89 @@
         <div class="info">
             <p class="info-name smallText">Nombre:</p>
             <p class="info-text">{{name}}</p>
-            <i class="far fa-edit"></i>
+            <i class="far fa-edit" (click)='toggleEditModal("nombre")'></i>
         </div>
         <div class="info">
             <p class="info-name smallText">Email:</p>
             <p class="info-text">{{email}}</p>
-            <i class="far fa-edit"></i>
+            <!--<i class="far fa-edit"></i>-->
         </div>
         <div class="info">
             <p class="info-name smallText">Contraseña:</p>
             <p class="info-text">***************</p>
-            <i class="far fa-edit"></i>
+            <!--<i class="far fa-edit"></i>-->
         </div>
-        <button class="profile-info-save lightGreenBackground smallText bold">Guardar</button>
+        <!--<button class="profile-info-save lightGreenBackground smallText bold">Guardar</button>-->
     </div>
     <div class="profile-subtitle">
         <p class="bold">Cuenta de Pagos</p>
     </div>
     <div class="paypal-container">
         <img src="../../../assets/img/paypalLogo.png" class="paypal-img">
-        <p class="paypal-account">paypal.me/account</p>
-        <p class="lightGreenText paypal-change">Cambiar</p>
+        <p class="paypal-account">{{paypal}}</p>
+        <p class="lightGreenText paypal-change" (click)="togglePaypal()">Cambiar</p>
+    </div>
+    <div class="profile-subtitle">
+        <p class="bold">Pagos</p>
+    </div>
+    <div class="table-wrapper">
+        <div class="table-title">
+            <p class="mediumGreyText">Cuenta</p>
+            <p class="mediumGreyText">Ganancia Previa</p>
+            <p class="mediumGreyText">Ganancia Nueva</p>
+            <p class="mediumGreyText">Tiempo de Pago</p>
+        </div>
+        <div class="table-row" *ngFor="let pago of pagoList">
+            <p>{{pago.userRef}}</p>
+            <p>$ {{pago.userBalancePrev}}</p>
+            <p>$ {{pago.userBalanceNew}}</p>
+            <p>{{pago.time}}</p>
+        </div>
     </div>
     <button (click)="onLogout()" class="text14 bold logoutBtn lightGreenBackground">Cerrar Sesión</button>
 </div>
+<div class="modal" *ngIf="showPaypalModal">
+    <div class="modal-background"  (click)="togglePaypal()">
+    </div>
+    <div class="paypal-modal">
+        <div class="paypal-header" (click)="togglePaypal()">
+            <p class="smallText"><i class="fas fa-arrow-left" style="margin-right: 15px;"></i>Cancelar</p>
+        </div>
+        <div class="paypal-body">
+            <p class="bold paypal-title">Agregar cuenta a Paypal</p>
+            <p class="smallText"> Ingresa a:
+                <br><br>
+                <a target="_blank" href="https://www.paypal.com/paypalme/my/landing" class="lightGreenText">https://www.paypal.com/paypalme/my/landing</a>
+                <br><br>
+                Sigue los pasos para crear tu link de deposito.
+                <br><br>
+                Una vez que tengas tu link, pegalo en la casilla de abajo, con esto podremos depositarte las ganancias que solicites.</p>
+                <div class="paypal-input">
+                    <input type="text" placeholder="paypal.me/biia" #paypalAccount name="paypalAccount" id="paypalAccount" class="bold">
+                    <div class="smallText paypal-terms">
+                        <div id="paypal-checkbox" (click)="toggleCheckBox()"></div><p style="color:rgba(255, 255, 255, 0.7)">Acepto los <span class="bold" style="color: white;">Términos y condiciones</span></p>
+                    </div>
+                </div>
+                <button class="text14 bold paypal-btn lightGreenBackground" id="paypal-save" (click)="savePaypal(paypalAccount.value)" disabled>Guardar Link de Paypal</button>
+        </div>
+    </div>
+</div>
+<div class="modal" *ngIf="showEditModal">
+    <div class="modal-background" (click)='toggleEditModal("")'></div>
+        <div class="edit-modal">
+            <div class="edit-header" (click)='toggleEditModal("")'>
+                <p class="smallText"><i class="fas fa-arrow-left" style="margin-right: 15px;"></i>Cancelar</p>
+            </div>
+            <div class="edit-body">
+                <p class="bold paypal-title">Editar {{label}}</p>
+                <div class="edit-input">
+                    <label class="modal-label" for="edit">{{label}}</label>
+                    <input type="text" [placeholder]="placeholder" [value]="name" name="edit" id="edit" class="bold" #edit>
+                </div>
+                <button class="text14 bold paypal-btn lightGreenBackground" id="edit-save" (click)="saveEdit(edit.value)">Guardar</button>
+            </div>
+        </div>
+</div>
+    
+
+

@@ -8,7 +8,6 @@
 </div>
 <div class="landingSection" id="secondSection">
     <div class="navbar">
-        <i class="fas fa-bars"></i>
         <a class="orangeText strong loginBtn" routerLink="/login">INICIAR SESION</a>  
     </div>
     <img src="/assets/img/Mexico.png" id="investorsBG">
@@ -27,12 +26,12 @@
     <a class="lightGreenBackground linkBtn strong">DESCUBRE COMO <i class="fas fa-long-arrow-alt-right" style="margin-left: 15px;"></i></a>
 </div>
 <div class="animalSections">
-    <div class="landingSection animalSection">
+    <div class="landingSection animalSection" (appear)="hasAppearedGuacamaya()">
         <div class="animalContainer">
             <div class="animalImg" id="guacamayaImg">
                 <img src="/assets/img/guacamaya.png">
             </div>
-            <div>
+            <div class="animal-text-container">
                 <p class="lightGreenText animalName">MOO | GUACAMAYA</p>
                 <p class="animalSubtitle bold">APRENDE</p>
                 <p class="animalText bold">COMIENZA TU CARTERA COMO UN TRADER</p>
@@ -41,7 +40,7 @@
         </div>
     </div>
     <div class="landingSection">
-        <div class="animalContainer" id="tortugaContainer">
+        <div class="animalContainer" id="tortugaContainer" (appear)="hasAppearedTortuga()">
             <div id="tortugaText">
                 <p class="purpleText animalName right">TORTUGA | AKK</p>
                 <p class="animalSubtitle bold right">INVIERTE</p>
@@ -55,10 +54,10 @@
     </div>
     <div class="landingSection">
         <div class="animalContainer">
-            <div class="animalImg" id="jaguarImg">
+            <div class="animalImg" id="jaguarImg" (appear)="hasAppearedJaguar()">
                 <img src="/assets/img/jaguar.png">
             </div>
-            <div>
+            <div class="animal-text-container">
                 <p class="orangeText animalName">BALAM | JAGUAR</p>
                 <p class="animalSubtitle bold">GANA</p>
                 <p class="animalText bold">Reducimos tu spread hasta un 25%</p>

@@ -1,42 +1,56 @@
 <app-admin-navbar [currentTab]=4></app-admin-navbar>
-<div class="questions-wrapper">
+<div class="questions-wrapper" *ngIf="!showAddQuestion && !showEditQuestion">
     <div class="questions-searchbar-container">
-        <a class="lightGreenText bold add-question">Añadir FAQ +</a>
+        <a class="lightGreenText bold add-question" (click)="toggleAddQuestion()">Añadir FAQ +</a>
         <div class="questions-searchbar">
             <input type=text placeholder="Buscar FAQ">
             <i class="fas fa-search"></i>
         </div>
     </div>
     <div class="questions-container">
-        <div class="question">
+        <div class="question" *ngFor="let question of questionList">
             <div class="question-header">
-                <p class="question-name bold">Pregunta 1</p>
-                <p class="lightGreenText bold question-edit">Editar</p>
-            </div>
-        </div>
-        <div class="question">
-            <div class="question-header">
-                <p class="question-name bold">Pregunta 2</p>
-                <p class="lightGreenText bold question-edit">Editar</p>
-            </div>
-        </div>
-        <div class="question">
-            <div class="question-header">
-                <p class="question-name bold">Pregunta 3</p>
-                <p class="lightGreenText bold question-edit">Editar</p>
-            </div>
-        </div>
-        <div class="question">
-            <div class="question-header">
-                <p class="question-name bold">Pregunta 4</p>
-                <p class="lightGreenText bold question-edit">Editar</p>
-            </div>
-        </div>
-        <div class="question">
-            <div class="question-header">
-                <p class="question-name bold">Pregunta 5</p>
-                <p class="lightGreenText bold question-edit">Editar</p>
+                <p class="question-name bold">{{question.name}}</p>
+                <p class="lightGreenText bold question-edit" (click)="toggleEditQuestion(question.id,question.name,question.description)">Editar</p>
             </div>
         </div>
     </div>
-</div>  
+</div>
+<div class="questions-wrapper" *ngIf="showAddQuestion">
+    <div class="questions-searchbar-container">
+        <a class="add-question" (click)="toggleAddQuestion()"><i class="fas fa-arrow-left" style="margin-right: 15px;"></i>Ver Preguntas</a>
+    </div>
+    <div class="questions-form">
+        <div class="questions-form-row">
+            <div class="text-fields-column">
+                <label for="name">Pregunta</label>
+                <input type="text" name="name" id="name" #name placeholder="Título de la pregunta">
+                <label for="descripcion">Descripción</label>
+                <textarea name="descripcion" id="descripcion" #description placeholder="Escribe una descripción"></textarea>
+            </div>
+        </div>
+    </div>
+    <div style="width: 860px; display: flex;">
+        <button class="delete-button" (click)="toggleAddQuestion()">Eliminar</button>
+        <button class="save-button" (click)="createQuestion(name.value,description.value)">Guardar</button>
+    </div>
+</div>
+<div class="questions-wrapper" *ngIf="showEditQuestion">
+    <div class="questions-searchbar-container">
+        <a class="add-question" (click)="toggleEditQuestion()"><i class="fas fa-arrow-left" style="margin-right: 15px;"></i>Ver Preguntas</a>
+    </div>
+    <div class="questions-form">
+        <div class="questions-form-row">
+            <div class="text-fields-column">
+                <label for="name">Pregunta</label>
+                <input type="text" name="name" id="name" #name placeholder="Título de la pregunta" [value]="questionName">
+                <label for="descripcion">Descripción</label>
+                <textarea name="descripcion" id="descripcion" #description placeholder="Escribe una descripción" [value]="questionDescription"></textarea>
+            </div>
+        </div>
+    </div>
+    <div style="width: 860px; display: flex;">
+        <button class="delete-button" (click)="removeQuestion()">Eliminar</button>
+        <button class="save-button" (click)="editQuestion(name.value,description.value)">Guardar</button>
+    </div>
+</div>

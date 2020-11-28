@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirestoreAdminService } from 'src/app/services/firestore-admin.service';
 
 @Component({
   selector: 'app-questions',
@@ -6,14 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./questions.component.scss']
 })
 export class QuestionsComponent implements OnInit {
+  questionList
 
-  constructor() { }
+  constructor(private afs : FirestoreAdminService) { }
 
   ngOnInit(): void {
+    this.afs.getQuestions().subscribe(res => {
+      this.questionList = res
+    })
   }
 
   toggleQuestionOpen(clicked){
-    document.getElementsByClassName('question')[clicked].classList.toggle('open');
+    document.getElementById(clicked).classList.toggle('open');
   }
 
 }

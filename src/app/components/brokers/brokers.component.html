@@ -1,43 +1,75 @@
 <app-navbar [currentTab]=1></app-navbar>
-<div class="brokers-wrapper">
+<div class="brokers-wrapper" *ngIf="!showAddAccount">
     <p class="brokers-title bold">BROKERS</p>
     <div id="brokers-container">
-        <div class="broker">
+        <div class="broker" *ngFor="let broker of brokerList">
             <div class="broker-header">
-                <img src="../../../assets/img/thinkLogo.png" class="broker-img">
-                <p class="broker-name"><b>Think Markets</b><br><a class="lightGreyText smallText" style="text-decoration: underline;">https://www.thinkmarkets.com/en/</a></p>
-                <p class="cuenta-add smallText lightGreenText">+ Añadir Cuenta</p>
+                <img [src]="broker.path" class="broker-img">
+                <p class="broker-name"><b>{{broker.name}}</b><br><a target="_blank" class="lightGreyText smallText" style="text-decoration: underline;" href="{{broker.page}}">{{broker.page}}</a></p>
+                <p class="cuenta-add smallText lightGreenText" (click)="changeBroker(broker.id,broker.name,broker.page,broker.path,broker.brokerID,broker.email)">+ Añadir Cuenta</p>
             </div>
-            <pre class="smallText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tellus quam malesuada tempus morbi a. Quis et nisl vestibulum, malesuada pellentesque. Magna volutpat suspendisse dui pellentesque. Aliquet massa donec morbi purus elementum sit quis duis. 
-
-• Nulla pellentesque gravida integer eu gravida nunc.
-• Lacus ut integer diam lectus s nectus tincidunt id ornare sed.
-• Tempus eu, egestas venenatis purus. Leo, amet, at urna gravida convallis aliquet pellentesque. </pre>
+            <pre class="smallText">{{broker.description}}</pre>
         </div>
-        <div class="broker">
-            <div class="broker-header">
-                <img src="../../../assets/img/thinkLogo.png" class="broker-img">
-                <p class="broker-name"><b>Think Markets</b><br><a class="lightGreyText smallText" style="text-decoration: underline;">https://www.thinkmarkets.com/en/</a></p>
-                <p class="cuenta-add smallText lightGreenText">+ Añadir Cuenta</p>
+    </div>
+</div>
+<div class="brokers-wrapper" *ngIf="showAddAccount">
+    <div class="add-account-wrapper">
+        <a (click)="toggleAddAccount()"><i class="fas fa-arrow-left" style="margin-right: 15px;"></i>Brokers</a>
+    </div>
+    <div class="add-broker-info">
+        <img src={{brokerPath}} class="add-broker-img"> 
+        <p class="broker-name"><b style="text-transform: uppercase;">{{brokerName}}</b><br><a target="_blank" class="lightGreyText smallText" style="text-decoration: underline;" href="{{brokerPage}}">{{brokerPage}}</a></p>
+    </div>
+    <div class="add-broker-body">
+        <div class="step">
+            <div class="step-label"><p class="bold smallText">Paso 1:</p></div>
+            <div class="step-body">
+                <p class="bold step-title">Abrir una cuenta en Fort Financial Services</p>
+                <a class="step-btn" href="{{brokerPage}}" target="_blank">Abrir ThinkForex en vivo</a>
+                <div style="display: flex; margin-top: 20px;">
+                    <div id="step-1-checkbox" class="step-checkbox" (click)="toggleCheckBox1()"></div><p class="bold">Ya tengo una cuenta en ThinkForex.</p>
+                </div>
             </div>
-            <pre class="smallText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tellus quam malesuada tempus morbi a. Quis et nisl vestibulum, malesuada pellentesque. Magna volutpat suspendisse dui pellentesque. Aliquet massa donec morbi purus elementum sit quis duis. 
-
-• Nulla pellentesque gravida integer eu gravida nunc.
-• Lacus ut integer diam lectus s nectus tincidunt id ornare sed.
-• Tempus eu, egestas venenatis purus. Leo, amet, at urna gravida convallis aliquet pellentesque. </pre>
         </div>
-        <div class="broker">
-            <div class="broker-header">
-                <img src="../../../assets/img/thinkLogo.png" class="broker-img">
-                <p class="broker-name"><b>Think Markets</b><br><a class="lightGreyText smallText" style="text-decoration: underline;">https://www.thinkmarkets.com/en/</a></p>
-                <p class="cuenta-add smallText lightGreenText">+ Añadir Cuenta</p>
+        <div class="step disabled" id="step-2">
+            <div class="step-label"><p class="bold smallText">Paso 2:</p></div>
+            <div class="step-body">
+                <p class="bold step-title">Ingresar tu número de cuenta en Fort Financial Services</p>
+                <input type="text" class="step-input" #cuenta placeholder="Número de cuenta" id="cuenta" (keyup)="changeAccount(cuenta.value)" disabled>
+                <div style="display: flex; margin-top: 20px;">
+                    <div id="step-2-checkbox" class="step-checkbox" (click)="toggleCheckBox2()"></div><p style="color:rgba(255, 255, 255, 0.7)">Acepto los <span class="bold" style="color: white;">Términos y condiciones</span>
+                </div>
             </div>
-            <pre class="smallText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tellus quam malesuada tempus morbi a. Quis et nisl vestibulum, malesuada pellentesque. Magna volutpat suspendisse dui pellentesque. Aliquet massa donec morbi purus elementum sit quis duis. 
-
-• Nulla pellentesque gravida integer eu gravida nunc.
-• Lacus ut integer diam lectus s nectus tincidunt id ornare sed.
-• Tempus eu, egestas venenatis purus. Leo, amet, at urna gravida convallis aliquet pellentesque. </pre>
         </div>
-        
+        <div class="step-full disabled" id="step-3">
+            <div class="step-label"><p class="bold smallText">Paso 3:</p></div>
+            <div class="step-body">
+                <p class="bold step-title">Enviar un correo a Fort Financial Services</p>
+                <div class="step-3-email-container">
+                    <div class="step-3-email">
+                        <div class="email-header">
+                            <p><span class="bold">Enviar a:</span> support@fortfs.com</p>
+                            <p><span class="bold">Título:</span> Account {{accountNumber}} change to BIIA</p>
+                        </div>
+                        <pre class="smallText">
+Dear {{brokerName}},
+
+Could you put my following {{brokerName}} de Broker account under BIIA IB, can you make the change as soon as possible?, this issue is quite urgent for me. 
+
+This issue is quite urgent for me, so please make this change as soon as possible. My account details and referral ID are listed below. 
+
+Account ID: {{accountNumber}}
+Referral IB: {{brokerRef}}
+
+I appreciate your prompt action to resolve my issue.
+
+Thanks and kind regards,
+{{userName}}.
+                        </pre>
+                    </div>
+                    <button class="step-btn smallText" id="email-btn" (click)="createAccount(userID,userName,accountNumber,brokerName,brokerPath)">Enviar Correo</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

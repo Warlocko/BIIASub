@@ -9,92 +9,42 @@
         </div>
     </div>
     <div class="dashboard-container" *ngIf="pendientes">
-        <p class="lightGreenText bold smallText dashboard-link">Marcar elementos seleccionados como completados</p>
         <div class="dashboard-table">
             <div class="dashboard-header">
                 <p>Usuario</p>
-                <p>Correo</p>
+                <p>Cuenta</p>
                 <p>Reembolso</p>
-                <p>Fecha</p>
-                <p>Hora</p>
+                <p>Tiempo de Petición</p>
+                <p>Paypal</p>
             </div>
-            <div class="dashboard-row">
-                <p>Carlos Aguirre Orozco</p>
-                <p>carlos.aguirreorozco@gmail.com</p>
-                <p>$1,023.29</p>
-                <p>12 de septiembre de 2020</p>
-                <p>09:08 PM</p>
+            <div class="dashboard-row" *ngFor="let reembolso of reembolsosPending">
+                <p>{{reembolso.userName}}</p>
+                <p>{{reembolso.accountRef}}</p>
+                <p>$ {{reembolso.amount}}</p>
+                <p>{{reembolso.time}}</p>
+                <p>{{reembolso.paypal}}</p>
                 <div class="checkbox-container">
-                    <img src="../../../assets/img/paypalGrey.png" class="paypal-logo">
-                    <div class="dashboard-checkbox selected"></div>
-                </div>
-            </div>
-            <div class="dashboard-row">
-                <p>Carlos Aguirre Orozco</p>
-                <p>carlos.aguirreorozco@gmail.com</p>
-                <p>$1,023.29</p>
-                <p>12 de septiembre de 2020</p>
-                <p>09:08 PM</p>
-                <div class="checkbox-container">
-                    <img src="../../../assets/img/paypalGrey.png" class="paypal-logo">
-                    <div class="dashboard-checkbox"></div>
-                </div>
-            </div>
-            <div class="dashboard-row">
-                <p>Carlos Aguirre Orozco</p>
-                <p>carlos.aguirreorozco@gmail.com</p>
-                <p>$1,023.29</p>
-                <p>12 de septiembre de 2020</p>
-                <p>09:08 PM</p>
-                <div class="checkbox-container">
-                    <img src="../../../assets/img/paypalGrey.png" class="paypal-logo">
-                    <div class="dashboard-checkbox selected"></div>
+                    <!--<img src="../../../assets/img/paypalGrey.png" class="paypal-logo">-->
+                    <div class="dashboard-checkbox" (click)="checkReembolso(reembolso.id)"></div>
                 </div>
             </div>
         </div>
     </div>
     <div class="dashboard-container" *ngIf="realizados">
-        <p class="bold smallText dashboard-link-red">Marcar elementos seleccionados como completados</p>
         <div class="dashboard-table">
             <div class="dashboard-header">
                 <p>Usuario</p>
-                <p>Correo</p>
+                <p>Cuenta</p>
                 <p>Reembolso</p>
-                <p>Fecha</p>
-                <p>Hora</p>
+                <p>Tiempo de Petición</p>
+                <p>Tiempo de Cierre</p>
             </div>
-            <div class="dashboard-row">
-                <p>Carlos Aguirre Orozco</p>
-                <p>carlos.aguirreorozco@gmail.com</p>
-                <p>$1,023.29</p>
-                <p>12 de septiembre de 2020</p>
-                <p>09:08 PM</p>
-                <div class="checkbox-container">
-                    <img src="../../../assets/img/paypalGrey.png" class="paypal-logo">
-                    <div class="dashboard-checkbox selected-red"></div>
-                </div>
-            </div>
-            <div class="dashboard-row">
-                <p>Carlos Aguirre Orozco</p>
-                <p>carlos.aguirreorozco@gmail.com</p>
-                <p>$1,023.29</p>
-                <p>12 de septiembre de 2020</p>
-                <p>09:08 PM</p>
-                <div class="checkbox-container">
-                    <img src="../../../assets/img/paypalGrey.png" class="paypal-logo">
-                    <div class="dashboard-checkbox"></div>
-                </div>
-            </div>
-            <div class="dashboard-row">
-                <p>Carlos Aguirre Orozco</p>
-                <p>carlos.aguirreorozco@gmail.com</p>
-                <p>$1,023.29</p>
-                <p>12 de septiembre de 2020</p>
-                <p>09:08 PM</p>
-                <div class="checkbox-container">
-                    <img src="../../../assets/img/paypalGrey.png" class="paypal-logo">
-                    <div class="dashboard-checkbox selected-red"></div>
-                </div>
+            <div class="dashboard-row" *ngFor="let reembolso of reembolsosDone">
+                <p>{{reembolso.userName}}</p>
+                <p>{{reembolso.accountRef}}</p>
+                <p>$ {{reembolso.amount}}</p>
+                <p>{{reembolso.time}}</p>
+                <p>{{reembolso.closeTime}}</p>
             </div>
         </div>
     </div>

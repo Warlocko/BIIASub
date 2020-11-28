@@ -127,10 +127,12 @@
 #cuenta-add{
     width: 50%;
     text-align: right;
+    text-decoration: none;
 }
 
 .table-wrapper, .cuentas-info{
     overflow-y: scroll;
+    height: calc(420px - 55px);
 }
 
 .table-title{
@@ -167,6 +169,7 @@
     display: flex;
     align-items: center;
     border-bottom: 1px solid rgba(24,32,36,1);
+    width: calc(100% - 40px);
 }
 
 .cuenta div{
@@ -191,4 +194,89 @@
 
 .cuenta-number{
     font-size: 25px;
+}
+
+.modal{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 101;
+}
+
+.modal-background{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    top: 0;
+    left: 0;
+}
+
+.modal-title{
+    width: 95%;
+}
+
+.edit-modal{
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background-color: rgba(18,29,35,1);
+}
+
+.edit-header{
+    position: relative;
+    width: calc(100% - 25);
+    height: 60px;
+    background-color: rgba(12,20,24,1);
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    cursor: pointer;
+}
+
+.edit-body{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-label{
+    width: 350px;
+    text-transform: capitalize;
+    text-align: left;
+    left: 10px;
+    margin-bottom: 10px;
+}
+
+.edit-input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.edit-input input[type="text"]{
+    width: 310px;
+    background-color: rgba(12,20,24,1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 13px 20px;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.edit-btn{
+    position: relative;
+    margin-top: 30px;
+    width: 150px;
+    color: white;
+    border: none;
+    padding: 20px;
+    border-radius: 5px;
+    font-family: 'Roboto', monospace;
 }

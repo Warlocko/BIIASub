@@ -1,49 +1,47 @@
 <app-navbar [currentTab]=2></app-navbar>
-<div id="academias-wrapper">
+<div class="academias-wrapper" *ngIf="!showAcademiaInfo">
     <p class="academias-title bold">ACADEMIAS</p>
     <div class="academias-container">
-        <div class="academia">
+        <div class="academia" *ngFor="let academia of academiaList">
             <div class="academia-img-container">
-                <img src="../../../assets/img/ofxLogo.png" class="academia-img">
-                <p class="academia-discount lightGreenBackground bold">30% off</p>
+                <img [src]="academia.path" class="academia-img">
+                <p class="academia-discount lightGreenBackground bold" *ngIf="academia.discount && academia.discount!=0">{{academia.discount}}% off</p>
             </div>
-            <p class="academia-name bold">OFX ACADEMY</p>
-            <p class="academia-text smallText">Aprende en la comunidad de Traders más grande de América Latina.</p>
-            <a class="academia-link lightGreenText">DESCUBRE COMO</a>
+            <p class="academia-name bold">{{academia.name | uppercase}}</p>
+            <p class="academia-text smallText">{{academia.description}}</p>
+            <a class="academia-link lightGreenText" (click)="toggleAcademiaInfo(academia.name,academia.description,academia.discount,academia.path,academia.id)">DESCUBRE COMO</a>
         </div>
-        <div class="academia">
-            <div class="academia-img-container">
-                <img src="../../../assets/img/ofxLogo.png" class="academia-img">
+    </div>
+</div>
+<div class="academias-wrapper" *ngIf="showAcademiaInfo">
+    <div class="academias-searchbar-container">
+        <a class="show-academias" (click)='toggleAcademiaInfo("","","","",editId)'><i class="fas fa-arrow-left" style="margin-right: 15px;"></i>Academias</a>
+    </div>
+    <div class="academia-details">
+        <div class="academia-column">
+            <div class="academia-header">
+                <img [src]="academiaPath" class="academia-detail-img">
+                <p class="bold">{{academiaName}}<br><span *ngIf="academiaDiscount != 0" class="lightGreenText">{{academiaDiscount}}% OFF</span></p>
             </div>
-            <p class="academia-name bold">OFX ACADEMY</p>
-            <p class="academia-text smallText">Aprende en la comunidad de Traders más grande de América Latina.</p>
-            <a class="academia-link lightGreenText">DESCUBRE COMO</a>
+            <div class="academia-body">
+                <p>{{academiaDescription}}</p>
+            </div>
         </div>
-        <div class="academia">
-            <div class="academia-img-container">
-                <img src="../../../assets/img/ofxLogo.png" class="academia-img">
+        <div class="plan-list">
+            <div class="plan" *ngFor="let plan of planList">
+                <div class="plan-header">
+                    <p class="plan-name bold">{{plan.name}}</p>
+                    <div class="plan-numbers">
+                        <p class="plan-original-price bold" *ngIf="academiaDiscount != 0">${{plan.price}}USD<br><span class="lightGreenText" style="text-align: right;">{{academiaDiscount}}%</span></p>
+                        <p class="plan-discount bold">${{plan.discount}} USD</p>
+                    </div>
+                </div>
+                <div class="plan-body">
+                    <p class="plan-bullet smallText" *ngFor="let bullet of plan.bullets">• {{bullet}}</p>
+                </div>
+                <p class="lightGreenText show-more-text smallText">Ver más</p>
+                <a [href]="plan.buy_link" class="plan-link lightGreenBackground">COMPRAR <i class="fas fa-arrow-right" style="margin-left: 50px;"></i></a>
             </div>
-            <p class="academia-name bold">OFX ACADEMY</p>
-            <p class="academia-text smallText">Aprende en la comunidad de Traders más grande de América Latina.</p>
-            <a class="academia-link lightGreenText">DESCUBRE COMO</a>
-        </div>
-        <div class="academia">
-            <div class="academia-img-container">
-                <img src="../../../assets/img/ofxLogo.png" class="academia-img">
-                <p class="academia-discount lightGreenBackground bold">30% off</p>
-            </div>
-            <p class="academia-name bold">OFX ACADEMY</p>
-            <p class="academia-text smallText">Aprende en la comunidad de Traders más grande de América Latina.</p>
-            <a class="academia-link lightGreenText">DESCUBRE COMO</a>
-        </div>
-        <div class="academia">
-            <div class="academia-img-container">
-                <img src="../../../assets/img/ofxLogo.png" class="academia-img">
-                <p class="academia-discount lightGreenBackground bold">30% off</p>
-            </div>
-            <p class="academia-name bold">OFX ACADEMY</p>
-            <p class="academia-text smallText">Aprende en la comunidad de Traders más grande de América Latina.</p>
-            <a class="academia-link lightGreenText">DESCUBRE COMO</a>
         </div>
     </div>
 </div>

@@ -1,24 +1,183 @@
 <app-admin-navbar [currentTab]=3></app-admin-navbar>
-<div class="academias-wrapper">
+<div class="academias-wrapper" *ngIf="!showCreateAcademia && !showEditAcademia">
     <div class="academias-searchbar-container">
-        <a class="lightGreenText bold add-academia">Añadir Academia +</a>
+        <a class="lightGreenText bold add-academia" (click)="toggleForm()">Añadir Academia +</a>
         <div class="academias-searchbar">
             <input type=text placeholder="Buscar Academia">
             <i class="fas fa-search"></i>
         </div>
     </div>
     <div class="academias-container">
-        <div class="academia">
-            <img src="../../../assets/img/thinkLogo.png" class="academia-img">
-            <p class="academia-name bold">OFX INC</p>
-            <p class="academia-plans smallText">3 Planes</p>
-            <p class="academia-edit lightGreenText">Editar</p>
+        <div class="academia" *ngFor="let academia of academiaList">
+            <img [src]="academia.path" class="academia-img">
+            <p class="academia-name bold">{{academia.name}}</p>
+            <p class="academia-plans smallText">{{academia.planNumber}} Planes</p>
+            <a class="academia-edit lightGreenText" (click)="toggleEditAcademia(academia.id,academia.name,academia.discount,academia.description,academia.path,academia.planNumber)">Editar</a>
         </div>
-        <div class="academia">
-            <img src="../../../assets/img/thinkLogo.png" class="academia-img">
-            <p class="academia-name bold">OFX INC</p>
-            <p class="academia-plans smallText">3 Planes</p>
-            <p class="academia-edit lightGreenText">Editar</p>
+    </div>
+</div>
+<div class="academias-wrapper" *ngIf="showCreateAcademia">
+    <div class="academias-searchbar-container">
+        <a class="add-academia" (click)="toggleForm()"><i class="fas fa-arrow-left" style="margin-right: 15px;"></i>Ver Academias</a>
+    </div>
+    <div class="academias-form">
+        <div class="academias-form-row">
+            <div>
+                <div class="dropzone" 
+                appFileDrop
+                (drop)="handleDrop($event)"><i class="far fa-image img-icon"></i></div>
+            </div>
+            <div class="text-fields-column">
+                <label for="name">Nombre de la academia</label>
+                <input type="text" name="name" id="name" #name placeholder="Escribe un nombre para la academia">
+                <label for="discount">Porcentaje de descuento</label>
+                <input type="text" name="discount" id="discount" #discount placeholder="0-100">
+            </div>
+            <div class="text-fields-column">
+                <div class="text-area-column">
+                    <label for="descripcion">Descripción</label>
+                    <textarea name="descripcion" id="descripcion" #description placeholder="Escribe una descripción"></textarea>
+                    </div> 
+            </div>
         </div>
+    </div>
+    <div style="margin-bottom: 20px;">{{confirmation}}</div>
+    <div style="width: 860px; display: flex;">
+        <button class="delete-button" (click)="toggleForm()">Eliminar</button>
+        <button class="save-button" (click)="uploadAcademia(name.value,discount.value,description.value)">Guardar</button>
+    </div>
+</div>
+<div class="academias-wrapper" *ngIf="showEditAcademia && !showAddPlan && !showEditPlan">
+    <div class="academias-searchbar-container">
+        <a class="add-academia" (click)="toggleEditAcademia(editId,null,null,null,null,null)"><i class="fas fa-arrow-left" style="margin-right: 15px;"></i>Ver Academias</a>
+    </div>
+    <div class="academias-form">
+        <div class="academias-form-row">
+            <div>
+                <div class="dropzone" 
+                appFileDrop
+                (drop)="handleDrop($event)"><i class="far fa-image img-icon"></i></div>
+            </div>
+            <div class="text-fields-column">
+                <label for="name">Nombre de la academia</label>
+                <input type="text" name="name" id="name" #name placeholder="Escribe un nombre para la academia" [value]=academiaName>
+                <label for="discount">Porcentaje de descuento</label>
+                <input type="text" name="discount" id="discount" #discount placeholder="0-100" [value]=academiaDiscount>
+            </div>
+            <div class="text-fields-column">
+                <div class="text-area-column">
+                    <label for="descripcion">Descripción</label>
+                    <textarea name="descripcion" id="descripcion" #description placeholder="Escribe una descripción" [value]=academiaDiscount></textarea>
+                    </div> 
+            </div>
+        </div>
+        <div class="academias-form-row">
+             <p class="form-subtitle bold">Planes <span style="font-size: 20px; color: rgba(255,255,255,0.3); font-weight: 400;">{{academiaPlansNumber}} planes</span></p>
+             <a class="add-plan lightGreenText smallText bold" (click)="togglePlanForm()">+ Añadir Plan</a>
+        </div>
+        <div class="academias-form-row">
+            <div class="academias-table">
+                <div class="academias-table-header">
+                    <p>Nombre</p>
+                    <p>Precio Original</p>
+                    <p>Precio</p>
+                    <p>Descuento</p>
+                </div>
+                <div class="academias-table-row" *ngFor="let plan of planes">
+                    <p>{{plan.name}}</p>
+                    <p style="text-decoration: line-through;">{{plan.price}}</p>
+                    <p>{{plan.discount}}</p>
+                    <p>{{academiaDiscount}}</p>
+                    <a class="lightGreenText" (click)="toggleEditPlan(plan.id,plan.name,plan.buy_link,plan.price,plan.discount,plan.telegram,plan.success,plan.bullets)">Editar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-bottom: 20px;">{{confirmation}}</div>
+    <div style="width: 860px; display: flex;">
+        <button class="delete-button" (click)="removeAcademia()">Eliminar</button>
+        <button class="save-button" (click)="editAcademia(name.value,discount.value,description.value,academiaPath)">Guardar</button>
+    </div>
+</div>
+<div class="academias-wrapper" *ngIf="showAddPlan">
+    <div class="academias-searchbar-container">
+        <a class="add-academia" (click)="togglePlanForm()"><i class="fas fa-arrow-left" style="margin-right: 15px;"></i>Ver Academia {{academiaName}}</a>
+    </div>
+    <div class="academias-form">
+        <div class="academias-form-row">
+            <div class="text-fields-column" style="width: 50%; margin-left: 0;">
+                <p class="form-title bold">Plan de {{academiaName}}</p>
+                <label for="name">Nombre</label>
+                <input type="text" name="name" id="name" #planName placeholder="Escribe un nombre para el plan">
+                <label for="page">Link de Compra</label>
+                <input type="text" name="page" id="page" #planBuyLink placeholder="Link a la página de la academia">
+                <div class="academias-form-row">
+                    <div class="text-fields-column" style="width: 50%; margin-left: 0;">
+                        <label for="discount">Precio</label>
+                        <input type="text" name="Precio" id="Precio" #planPrice placeholder="Precio Original">
+                    </div>
+                    <div class="text-fields-column" style="width: 50%;">
+                        <label for="discount">Descuento</label>
+                        <input type="text" name="Descuento" id="Descuento" #planDiscount placeholder="Precio después del descuento">
+                    </div>
+                </div>
+                <label for="telegram">Link de Telegram</label>
+                <input type="text" name="telegram" id="telegram" #planTelegramLink placeholder="Escribe el link para mandar mensaje a telegram">
+                <label for="success">Mensaje de éxito</label>
+                <textarea name="success" id="success" #planSuccess placeholder="" style="height: 60px;"></textarea>
+            </div>
+            <div class="text-fields-column" style="width: 50%;">
+                <div class="text-area-column">
+                    <label for="bullets">Bullet Points <span style="color: rgba(255,255,255,0.3); font-size: 12px;">Da enter para separar los diferentes puntos</span></label>
+                    <textarea name="bullets" id="bullets" #planBullets placeholder="Escribe una descripción" style="height: 470px;"></textarea>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div style="margin-bottom: 20px;">{{confirmation}}</div>
+    <div style="width: 860px; display: flex;">
+        <button class="delete-button" (click)="togglePlanForm()">Eliminar</button>
+        <button class="save-button" (click)="createPlan(editId,planName.value,planBuyLink.value,planPrice.value,planDiscount.value,planTelegramLink.value,planSuccess.value,planBullets.value)">Guardar</button>
+    </div>
+</div>
+<div class="academias-wrapper" *ngIf="showEditPlan">
+    <div class="academias-searchbar-container">
+        <a class="add-academia" (click)="toggleEditPlan(null,null,null,null,null,null,null,null)"><i class="fas fa-arrow-left" style="margin-right: 15px;"></i>Ver Academia {{academiaName}}</a>
+    </div>
+    <div class="academias-form">
+        <div class="academias-form-row">
+            <div class="text-fields-column" style="width: 50%; margin-left: 0;">
+                <p class="form-title bold">Plan de {{academiaName}}</p>
+                <label for="name">Nombre</label>
+                <input type="text" name="name" id="name" [value]="plan_name" #planName placeholder="Escribe un nombre para el plan">
+                <label for="page">Link de Compra</label>
+                <input type="text" name="page" id="page" [value]="plan_buy_link" #planBuyLink placeholder="Link a la página de la academia">
+                <div class="academias-form-row">
+                    <div class="text-fields-column" style="width: 50%; margin-left: 0;">
+                        <label for="discount">Precio</label>
+                        <input type="text" name="Precio" id="Precio" [value]="plan_price" #planPrice placeholder="Precio Original">
+                    </div>
+                    <div class="text-fields-column" style="width: 50%;">
+                        <label for="discount">Descuento</label>
+                        <input type="text" name="Descuento" id="Descuento" [value]="plan_discount" #planDiscount placeholder="Precio después del descuento">
+                    </div>
+                </div>
+                <label for="telegram">Link de Telegram</label>
+                <input type="text" name="telegram" id="telegram" [value]="plan_telegram" #planTelegramLink placeholder="Escribe el link para mandar mensaje a telegram">
+                <label for="success">Mensaje de éxito</label>
+                <textarea name="success" id="success" [value]="plan_success" #planSuccess placeholder="" style="height: 60px;"></textarea>
+            </div>
+            <div class="text-fields-column" style="width: 50%;">
+                <div class="text-area-column">
+                    <label for="bullets">Bullet Points <span style="color: rgba(255,255,255,0.3); font-size: 12px;">Un bullet por linea</span></label>
+                    <textarea name="bullets" id="bullets" [value]="plan_bullets" #planBullets placeholder="Escribe una descripción" style="height: 470px;"></textarea>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <div style="margin-bottom: 20px;">{{confirmation}}</div>
+    <div style="width: 860px; display: flex;">
+        <button class="delete-button" (click)="removePlan(editId,plan_id)">Eliminar</button>
+        <button class="save-button" (click)="updatePlan(planName.value,planBuyLink.value,planPrice.value,planDiscount.value,planTelegramLink.value,planSuccess.value,planBullets.value)">Guardar</button>
     </div>
 </div>

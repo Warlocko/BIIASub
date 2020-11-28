@@ -159,7 +159,7 @@
 }
 
 .animalText{
-    font-size: 17px;
+    font-size: 14px;
     margin: 16px 0 30px;
     text-transform: uppercase;
 }
@@ -259,4 +259,54 @@
 #footerContainer i{
     margin: 30px 5%;
     font-size: 20px;
+}
+
+#guacamayaImg, #jaguarImg{
+    position: relative;
+    left: -100%;
+    transition: 1s;
+    width: 450px;
+    height: 350px;
+}
+
+#guacamayaImg img{
+    height: 100%;
+}
+
+.appearedImg{
+    left: 0 !important;
+}
+
+.animal-text-container{
+    position: relative;
+    right: -100%;
+    transition: 1s;
+    width: 500px;
+}
+
+.appearedText{
+    right: 0;
+}
+
+#tortugaText{
+    position: relative;
+    left: -100%;
+    transition: 1s;
+    width: 500px;
+}
+
+.appearedTextLeft{
+    left: 0 !important;
+}
+
+#tortugaImg{
+    position: relative;
+    right: -100%;
+    transition: 1s;
+    width: 450px;
+    height: 350px;
+}
+
+.appearedImgRight{
+    right: 0 !important;
 }

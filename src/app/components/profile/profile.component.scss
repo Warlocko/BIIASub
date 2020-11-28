@@ -38,7 +38,7 @@
 
 .info{
     position: relative;
-    width: 22%;
+    width: 28%;
     margin: 0 1.5%;
     background-color: rgba(12,20,24,1);
     border-radius: 10px;
@@ -76,6 +76,7 @@
     display: flex;
     align-items: center;
     margin-top: 30px;
+    margin-bottom: 30px;
     width: 90%;
 }
 
@@ -86,9 +87,10 @@
 .paypal-change{
     position: absolute;
     right: 0;
+    cursor: pointer;
 }
 
-.logoutBtn{
+.logoutBtn,.paypal-btn{
     position: relative;
     margin-top: 30px;
     width: 150px;
@@ -97,4 +99,185 @@
     padding: 20px;
     border-radius: 5px;
     font-family: 'Roboto', monospace;
+}
+
+.modal{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 101;
+}
+
+.modal-background{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    top: 0;
+    left: 0;
+}
+
+.paypal-modal{
+    position: fixed;
+    width: 500px;
+    height: 600px;
+    background-color: rgba(18,29,35,1);
+}
+
+.paypal-header{
+    position: relative;
+    width: calc(100% - 25);
+    height: 60px;
+    background-color: rgba(12,20,24,1);
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    cursor: pointer;
+}
+
+.paypal-body{
+    padding: 20px;
+}
+
+.paypal-title{
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+.paypal-input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.paypal-input input[type="text"]{
+    width: 310px;
+    background-color: rgba(12,20,24,1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 13px 20px;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.paypal-input input[type="text"]::placeholder{
+    color: rgba(255,255,255,0.3)
+}
+
+.paypal-terms{
+    display: flex;
+}
+
+#paypal-checkbox{
+    width: 20px;
+    height: 20px;
+    background-color: rgba(12,20,24,1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#paypal-checkbox.checked{
+    background-color: rgba(0,191,181,1) !important;
+}
+
+.paypal-btn{
+    position: absolute;
+    width: 320px;
+    height: 45px;
+    padding: 0;
+    left: calc(50% - 160px);
+    bottom: 30px;
+}
+
+.paypal-btn:disabled{
+    background-color: rgba(255,255,255,0.3);
+}
+
+.edit-modal{
+    position: fixed;
+    width: 500px;
+    height: 350px;
+    background-color: rgba(18,29,35,1);
+}
+
+.edit-header{
+    position: relative;
+    width: calc(100% - 25);
+    height: 60px;
+    background-color: rgba(12,20,24,1);
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    cursor: pointer;
+}
+
+.edit-body{
+    padding: 20px;
+}
+
+.modal-label{
+    width: 350px;
+    text-transform: capitalize;
+    text-align: left;
+    left: 10px;
+    margin-bottom: 10px;
+}
+
+.edit-input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.edit-input input[type="text"]{
+    width: 310px;
+    background-color: rgba(12,20,24,1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 13px 20px;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.fa-edit{
+    cursor: pointer;
+}
+
+.table-wrapper{
+    overflow-y: scroll;
+    width: 80%;
+    margin-top: 30px;
+    background-color: rgba(12,20,24,1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.table-title{
+    display: flex;
+    align-items: center;
+    padding: 13px 25px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.table-row{
+    display: flex;
+    align-items: center;
+    padding: 20px 25px;
+    border-top: 1px solid rgba(24,32,36,1);
+    border-bottom: 1px solid rgba(24,32,36,1);
+}
+
+.table-title p, .table-row p{
+    display: flex;
+    align-items: center;
+    width: 25%;
+    font-size: 14px;
 }

@@ -169,6 +169,11 @@ app-navbar{
     z-index: 100;
 }
 
+app-admin-navbar{
+    position: fixed;
+    z-index: 100;
+}
+
 button{
     cursor: pointer;
 }
