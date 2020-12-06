@@ -8,7 +8,9 @@ import { FirestoreAdminService } from 'src/app/services/firestore-admin.service'
 })
 export class AdminCuentasComponent implements OnInit {
   accountsList
+  accountsFiltered
   pagosList
+  pagosFiltered
   showBalanceModal
   accountID
   accountBalance
@@ -22,11 +24,30 @@ export class AdminCuentasComponent implements OnInit {
   ngOnInit(): void {
     this.afs.getAccounts().subscribe(res => {
       this.accountsList = res
+      this.accountsFiltered = res
     })
     this.afs.getPagos().subscribe(res => {
-      console.log(res)
       this.pagosList = res.sort( this.compare );
+      this.pagosFiltered = this.pagosList
     })
+  }
+
+  filterList(searchTerm:string){
+    this.accountsFiltered = this.accountsList.filter(function (el) {
+      var name:string = el.name;
+      var ref:string = el.accountID
+      var time:string = el.time
+      return name.toLowerCase().includes(searchTerm.toLowerCase()) || time.toLowerCase().includes(searchTerm.toLowerCase()) || ref.toLowerCase().includes(searchTerm.toLowerCase())
+    });
+  }
+
+  filterPagos(searchTerm:string){
+    this.pagosFiltered = this.pagosList.filter(function (el) {
+      var name:string = el.user;
+      var time:string = el.time
+      var ref:string = el.userRef
+      return name.toLowerCase().includes(searchTerm.toLowerCase()) || time.toLowerCase().includes(searchTerm.toLowerCase()) || ref.toLowerCase().includes(searchTerm.toLowerCase())
+    });
   }
 
   compare( a, b ) {

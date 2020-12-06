@@ -3,15 +3,15 @@
     <div class="brokers-searchbar-container">
         <p class="lightGreenText bold add-broker" (click)="toggleForm()">Añadir Broker +</p>
         <div class="brokers-searchbar">
-            <input type=text placeholder="Buscar broker">
+            <input type=text placeholder="Buscar broker" (keyup)="filterList(search.value)" #search>
             <i class="fas fa-search"></i>
         </div>
     </div>
     <div class="brokers-container">
-        <div class="broker" *ngFor="let broker of brokerList">
+        <div class="broker" *ngFor="let broker of brokerFiltered">
             <img [src]="broker.path" class="broker-img">
             <p class="broker-name bold">{{broker.name}}</p>
-            <a class="broker-link smallText">{{broker.page}}</a>
+            <a target="_blank" class="broker-link smallText" [href]="broker.page">{{broker.page}}</a>
             <p class="broker-edit lightGreenText" (click)="toggleEditBroker(broker.id,broker.name,broker.brokerID,broker.page,broker.email,broker.description,broker.path)">Editar</p>
         </div>
     </div>

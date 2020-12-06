@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   showPaypalModal = false;
   checkboxChecked = false;
   showEditModal = false;
-  pagoList
+  reembolsoList
 
   constructor(public firebaseAuth : AngularFireAuth, private router:Router, private userService: UserService, private afs: FirestoreAdminService) { }
 
@@ -32,10 +32,20 @@ export class ProfileComponent implements OnInit {
       this.email = res.email;
       this.paypal = res.paypal;
       })
-      this.afs.getPagosFiltered(user.uid).subscribe(res => {
-        this.pagoList = res
+      this.afs.getReembolsosFiltered(user.uid).subscribe(res => {
+        this.reembolsoList = res.sort( this.compare )
       })
     })
+  }
+
+  compare( a, b ) {
+    if ( a.time > b.time ){
+      return -1;
+    }
+    if ( a.time < b.time ){
+      return 1;
+    }
+    return 0;
   }
 
   toggleEditModal(attribute:string){
@@ -70,11 +80,12 @@ export class ProfileComponent implements OnInit {
     this.checkboxChecked = false;
   }
 
-  onLogout(){
-    this.firebaseAuth.signOut().then(() =>{
-        this.router.navigate(['login'])
-      }
-    )
+  resetPassword(){
+    this.firebaseAuth.sendPasswordResetEmail(this.email).then(() => {
+      alert('Se ha enviado un correo de restablecimiento a tu cuenta.')
+    },err => {
+      console.log(err)
+    })
   }
 
 }

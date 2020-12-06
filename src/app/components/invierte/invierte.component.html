@@ -1,0 +1,43 @@
+<div class="aprende-navbar">
+    <a routerLink="/"><img src="../../../assets/img/logoWhite.png" class="aprende-navbar-logo"></a>
+    <div class="aprende-links">
+        <a class="aprende-link" routerLink="/aprende">APRENDE</a>
+        <a class="aprende-selected-link aprende-link">INVIERTE</a>
+    </div>
+</div>
+<div class="aprende-hero">
+    <div class="aprende-hero-container">
+        <div class="aprende-hero-img-container">
+            <img src="../../../assets/img/tortuga.png" class="aprende-hero-img">
+        </div>
+        <div class="aprende-hero-text">
+            <p class="aprende-hero-animal">AKK</p>
+            <p class="aprende-hero-title">INVIERTE</p>
+            <p class="aprende-hero-description">Es la representación de la experiencia y el conocimiento, En BIIA te brindamos el conocimiento y experiencia de las mejores academias de trading online.</p>
+        </div>
+    </div>
+</div>
+<div class="aprende-swiper-container">
+    <p class="swiper-legend">Aprende de los mejores</p>
+    <swiper [config]="config" class="aprende-swiper">
+        <div class="aprende-academia" *ngFor="let broker of brokerList"><a routerLink="/login">
+            <div class="aprende-img-container">
+                <img [src]="broker.path" class="aprende-img">
+            </div>
+            <p class="aprende-academia-title">{{broker.name}}</p>
+            <p class="aprende-academia-text">{{broker.description}}</p>
+        </a></div>
+    </swiper>
+</div>
+<div id="footer">
+    <div id="footerContainer">
+        <img src="/assets/img/logoWhite.png">
+        <p class="bold footer-text" style="letter-spacing: 5px;">BIIA</p>
+        <div>
+            <a target="_blank" href="https://www.instagram.com/biia.lat/?igshid=kv2tz50zwwln" style="color: white;"><i class="fab fa-instagram"></i></a>
+            <a target="_blank" href="https://www.facebook.com/pages/category/Product-Service/BIIA-106236047693293/" style="color: white;"><i class="fab fa-facebook"></i></a>
+        </div>
+        <p class="footer-text darkGreyText">BIIA. Todos los derechos reservados</p>
+    </div>
+</div>
+

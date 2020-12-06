@@ -4,7 +4,7 @@
         <p class="tab first-tab selected-tab smallText" id="pendientes" (click)="showPendientes()">Pendientes</p>
         <p class="tab smallText" id="realizados" (click)="showRealizados()">Realizados</p>
         <div class="tabs-searchbar">
-            <input type=text placeholder="Buscar Pago">
+            <input type=text placeholder="Buscar Reembolso" (keyup)="filterList(search.value)" #search>
             <i class="fas fa-search"></i>
         </div>
     </div>
@@ -17,7 +17,7 @@
                 <p>Tiempo de Petición</p>
                 <p>Paypal</p>
             </div>
-            <div class="dashboard-row" *ngFor="let reembolso of reembolsosPending">
+            <div class="dashboard-row" *ngFor="let reembolso of reembolsosPendingFiltered">
                 <p>{{reembolso.userName}}</p>
                 <p>{{reembolso.accountRef}}</p>
                 <p>$ {{reembolso.amount}}</p>
@@ -39,7 +39,7 @@
                 <p>Tiempo de Petición</p>
                 <p>Tiempo de Cierre</p>
             </div>
-            <div class="dashboard-row" *ngFor="let reembolso of reembolsosDone">
+            <div class="dashboard-row" *ngFor="let reembolso of reembolsosDoneFiltered">
                 <p>{{reembolso.userName}}</p>
                 <p>{{reembolso.accountRef}}</p>
                 <p>$ {{reembolso.amount}}</p>
@@ -49,4 +49,3 @@
         </div>
     </div>
 </div>
-<button class="text14 bold logoutBtn lightGreenBackground" (click)="onLogout()">Cerrar Sesión</button>

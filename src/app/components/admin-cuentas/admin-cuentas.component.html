@@ -4,11 +4,11 @@
         <p class="tab chosen-tab" id="cuentas" (click)="togglePagos('cuentas')">Cuentas</p>
         <p class="tab" id="pagos" (click)="togglePagos('pagos')">Pagos</p>
         <div class="cuentas-searchbar" *ngIf="!showPagos">
-            <input type=text placeholder="Buscar cuenta, ticket o usuario">
+            <input type=text placeholder="Buscar usuario, id de cuenta o tiempo" (keyup)="filterList(search.value)" #search>
             <i class="fas fa-search"></i>
         </div>
         <div class="cuentas-searchbar" *ngIf="showPagos">
-            <input type=text placeholder="Buscar pago">
+            <input type=text placeholder="Buscar usuario, id de cuenta o tiempo" (keyup)="filterPagos(pago.value)" #pago>
             <i class="fas fa-search"></i>
         </div>
     </div>
@@ -21,11 +21,11 @@
                 <p>Ganancia</p>
                 <p>Tiempo de Creación</p>
             </div>
-            <div class="cuentas-row" *ngFor="let account of accountsList">
+            <div class="cuentas-row" *ngFor="let account of accountsFiltered">
                 <p class="cuenta-column"><img src="{{account.brokerPath}}" class="cuenta-img">{{account.broker}}</p>
                 <p class="cuenta-column">{{account.name}}</p>
                 <p class="cuenta-column">{{account.accountID}}</p>
-                <p class="cuenta-column">$ {{account.balance}}</p>
+                <p class="cuenta-column">$ {{account.balance | number}}</p>
                 <p class="cuenta-column">{{account.time}}</p>
                 <div class="icons-container">
                     <p class="lightGreenText smallText clickable" *ngIf="!account.isActive" (click)="activateAccount(account.id)">Activar</p>
@@ -44,7 +44,7 @@
                 <p>Ganancia Nueva</p>
                 <p>Tiempo de Cambio</p>
             </div>
-            <div class="pagos-row" *ngFor="let pago of pagosList">
+            <div class="pagos-row" *ngFor="let pago of pagosFiltered">
                 <p class="pagos-column">{{pago.user}}</p>
                 <p class="pagos-column">{{pago.userRef}}</p>
                 <p class="pagos-column">$ {{pago.userBalancePrev}}</p>

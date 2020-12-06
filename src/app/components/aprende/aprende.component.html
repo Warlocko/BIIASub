@@ -1,0 +1,46 @@
+<div class="aprende-navbar">
+    <a routerLink="/"><img src="../../../assets/img/logoWhite.png" class="aprende-navbar-logo"></a>
+    <div class="aprende-links">
+        <a class="aprende-selected-link aprende-link">APRENDE</a>
+        <a class="aprende-link" routerLink="/invierte">INVIERTE</a>
+    </div>
+</div>
+<div class="aprende-hero">
+    <div class="aprende-hero-container">
+        <div class="aprende-hero-img-container">
+            <img src="../../../assets/img/guacamaya.png" class="aprende-hero-img">
+        </div>
+        <div class="aprende-hero-text">
+            <p class="aprende-hero-animal">MOO</p>
+            <p class="aprende-hero-title">APRENDE</p>
+            <p class="aprende-hero-description">Es relacionado con el tiempo y las alteraciones de la actividad alrededor del día. 
+                En BIIA las alteraciones del mercado las puedes aprovechar en conjunto con los de los mejores brokers a nivel mundial.</p>
+        </div>
+    </div>
+</div>
+<div class="aprende-swiper-container">
+    <p class="swiper-legend">Elige al broker con el que más te adaptes</p>
+    <swiper [config]="config" class="aprende-swiper">
+        <div class="aprende-academia" *ngFor="let academia of academiaList">
+            <a routerLink="/signup">
+                <div class="aprende-img-container">
+                    <img [src]="academia.path" class="aprende-img">
+                </div>
+                <p class="aprende-academia-title">{{academia.name}}</p>
+                <p class="aprende-academia-text">{{academia.description}}</p>
+                </a>
+            </div>
+            
+    </swiper>
+</div>
+<div id="footer">
+    <div id="footerContainer">
+        <img src="/assets/img/logoWhite.png">
+        <p class="bold footer-text" style="letter-spacing: 5px;">BIIA</p>
+        <div>
+            <a target="_blank" href="https://www.instagram.com/biia.lat/?igshid=kv2tz50zwwln" style="color: white;"><i class="fab fa-instagram"></i></a>
+            <a target="_blank" href="https://www.facebook.com/pages/category/Product-Service/BIIA-106236047693293/" style="color: white;"><i class="fab fa-facebook"></i></a>
+        </div>
+        <p class="footer-text darkGreyText">BIIA. Todos los derechos reservados</p>
+    </div>
+</div>

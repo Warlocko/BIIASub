@@ -3,12 +3,12 @@
     <div id="title-wrapper">
         <p class="bold questions-title">FAQ'S</p>
         <div class="questions-searchbar">
-            <input type=text placeholder="Buscar FAQ's">
+            <input type=text placeholder="Buscar FAQ's" (keyup)="searchFAQ(search.value)" #search>
             <i class="fas fa-search"></i>
         </div>
     </div>
     <div class="questions-container">
-        <div class="question" [id]="question.id" *ngFor="let question of questionList">
+        <div class="question" [id]="question.id" *ngFor="let question of questionFiltered">
             <div class="question-header" (click)="toggleQuestionOpen(question.id)" >
                 <p class="question-name bold">{{question.name}}</p>
                 <i class="fas fa-chevron-right"></i>

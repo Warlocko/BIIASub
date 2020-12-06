@@ -3,12 +3,12 @@
     <div class="questions-searchbar-container">
         <a class="lightGreenText bold add-question" (click)="toggleAddQuestion()">Añadir FAQ +</a>
         <div class="questions-searchbar">
-            <input type=text placeholder="Buscar FAQ">
+            <input type=text placeholder="Buscar FAQ" (keyup)="filterList(search.value)" #search>
             <i class="fas fa-search"></i>
         </div>
     </div>
     <div class="questions-container">
-        <div class="question" *ngFor="let question of questionList">
+        <div class="question" *ngFor="let question of questionFiltered">
             <div class="question-header">
                 <p class="question-name bold">{{question.name}}</p>
                 <p class="lightGreenText bold question-edit" (click)="toggleEditQuestion(question.id,question.name,question.description)">Editar</p>

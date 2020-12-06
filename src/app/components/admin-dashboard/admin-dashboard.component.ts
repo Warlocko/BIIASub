@@ -12,17 +12,39 @@ export class AdminDashboardComponent implements OnInit {
   pendientes = true;
   realizados = false;
   reembolsosPending
+  reembolsosPendingFiltered
   reembolsosDone
+  reembolsosDoneFiltered
 
   constructor(public firebaseAuth : AngularFireAuth, private router: Router, public firestore: FirestoreAdminService) { }
 
   ngOnInit(): void {
     this.firestore.getReembolsosPending().subscribe(res => {
       this.reembolsosPending = res.sort(this.compare)
+      this.reembolsosPendingFiltered = this.reembolsosPending
     })
     this.firestore.getReembolsosDone().subscribe(res => {
       this.reembolsosDone = res.sort(this.compare)
+      this.reembolsosDoneFiltered = this.reembolsosDone
     })
+  }
+
+  filterList(searchTerm:string){
+    if(this.pendientes){
+      this.reembolsosPendingFiltered = this.reembolsosPending.filter(function (el) {
+        var name:string = el.userName;
+        var ref:string = el.accountRef;
+        var time:string = el.time;
+        return name.toLowerCase().includes(searchTerm.toLowerCase()) || ref.toLowerCase().includes(searchTerm.toLowerCase()) || time.toLowerCase().includes(searchTerm.toLowerCase())
+      });
+    }else if(!this.pendientes){
+      this.reembolsosDoneFiltered = this.reembolsosDone.filter(function (el) {
+        var name:string = el.userName;
+        var ref:string = el.accountRef;
+        var time:string = el.time;
+        return name.toLowerCase().includes(searchTerm.toLowerCase()) || ref.toLowerCase().includes(searchTerm.toLowerCase()) || time.toLowerCase().includes(searchTerm.toLowerCase())
+      });
+    }
   }
 
   compare( a, b ) {

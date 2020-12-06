@@ -10,6 +10,7 @@ import { FirestoreAdminService } from 'src/app/services/firestore-admin.service'
 })
 export class AdminQuestionsComponent implements OnInit {
   questionList
+  questionFiltered
 
   showAddQuestion:boolean = false;
   showEditQuestion:boolean = false;
@@ -23,6 +24,7 @@ export class AdminQuestionsComponent implements OnInit {
   ngOnInit(): void {
     this.afs.getQuestions().subscribe(res => {
       this.questionList = res
+      this.questionFiltered = res
     })
   }
 
@@ -50,6 +52,14 @@ export class AdminQuestionsComponent implements OnInit {
   removeQuestion(){
     this.afs.removeQuestion(this.editId)
     this.showEditQuestion = !this.showEditQuestion
+  }
+
+  filterList(searchTerm:string){
+    this.questionFiltered = this.questionList.filter(function (el) {
+        var name:string = el.name;
+        var description: string = el.description
+        return name.toLowerCase().includes(searchTerm.toLowerCase()) || description.toLowerCase().includes(searchTerm.toLowerCase())
+    });
   }
 
 }

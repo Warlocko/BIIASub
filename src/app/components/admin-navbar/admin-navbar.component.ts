@@ -30,4 +30,11 @@ export class AdminNavbarComponent implements OnInit {
     })
   }
 
+  onLogout(){
+    this.firebaseAuth.signOut().then(() =>{
+        this.router.navigate(['login'])
+      }
+    )
+  }
+
 }

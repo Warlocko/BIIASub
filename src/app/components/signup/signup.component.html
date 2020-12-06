@@ -2,19 +2,34 @@
 <img src="../../../../assets/img/logoWhite.png" class="signupLogo">
     <p class="lightGreyText smallText signupText">Registrarse</p>
     <p class="strong signupTitle">Bienvenido a BIIA</p>
-    <div class="inputContainer" *ngIf="!mailSignup">
+    <div class="inputContainer" *ngIf="!mailSignup && !googleSignup && !facebookSignup">
         <p class="smallText">Elige uno para crear tu cuenta:</p>
-        <button style="background-color: rgba(255,61,45,1);"><i class="fab fa-google"></i>Google</button>
-        <button style="background-color: rgba(27,72,171,1);"><i class="fab fa-facebook-f"></i>Facebook</button>
+        <button style="background-color: rgba(255,61,45,1);" (click)="toggleGoogleSignup()"><i class="fab fa-google"></i>Google</button>
+        <button style="background-color: rgba(27,72,171,1);" (click)="toggleFacebookSignup()"><i class="fab fa-facebook-f"></i>Facebook</button>
         <button style="background-color: rgba(21,20,20,1);" (click)="toggleMail()"><i class="fas fa-envelope"></i>Correo</button>
+    </div>
+    <div class="mailInputContainer" *ngIf="googleSignup">
+        <p class="smallText">Ingresa tus datos</p>
+        <div class="text-field"><i class="fas fa-user"></i><input type="text" placeholder="Nombre" class="text14 bold" name="name" #nameGoogle></div>
+        <p class="errorText">{{errorText}}</p>
+        <button class="text14 bold loginBtn lightGreenBackground" (click)="SignupWithGoogle(nameGoogle.value)">Crear cuenta</button>
+    </div>
+    <div class="mailInputContainer" *ngIf="facebookSignup">
+        <p class="smallText">Ingresa tus datos</p>
+        <div class="text-field"><i class="fas fa-user"></i><input type="text" placeholder="Nombre" class="text14 bold" name="name" #nameFacebook></div>
+        <p class="errorText">{{errorText}}</p>
+        <button class="text14 bold loginBtn lightGreenBackground" (click)="SignUpWithFacebook(nameFacebook.value)">Crear cuenta</button>
     </div>
     <div class="mailInputContainer" *ngIf="mailSignup">
         <p class="smallText">Ingresa tus datos</p>
-        <div class="text-field"><i class="fas fa-user"></i><input type="text" placeholder="Nombre" class="text14 bold" name="name" #name></div>
+        <div class="text-field"><i class="fas fa-user"></i><input type="text" placeholder="Nombre" class="text14 bold" name="name" #nameMail></div>
         <div class="text-field"><i class="fas fa-envelope"></i><input type="text" placeholder="Correo" class="text14 bold" name="email" #email></div>
         <div class="text-field"><i class="fas fa-key"></i><input type="password" placeholder="Contraseña" class="text14 bold" name="password" #password></div>
-        <button class="text14 bold loginBtn lightGreenBackground" (click)="createUser(name.value, email.value, password.value)">Crear cuenta</button>
+        <p class="errorText">{{errorText}}</p>
+        <button class="text14 bold loginBtn lightGreenBackground" (click)="createUser(nameMail.value, email.value, password.value)">Crear cuenta</button>
     </div>
     <p class="lightGreenText bold loginLink" routerLink="/login">Ya tengo cuenta</p>
-    <p class="darkGreyText smallText centerText termsText">Al crear una cuenta aceptas nuestros <span style="color: white;">Terminos<br> y condiciones</span></p>
-    <p class="darkGreyText smallText rightsText">BIIA. Todos los derechos reservados. 2020</p>
+    <div id="bottom-text">
+        <p class="darkGreyText smallText centerText termsText">Al crear una cuenta aceptas nuestros <a style="color: white; text-decoration: none;" routerLink="/terminos">Terminos y Condiciones</a> y nuestro <a style="color: white; text-decoration: none;" routerLink="/aviso">Aviso de Privacidad</a></p>
+        <p class="darkGreyText smallText rightsText">BIIA. Todos los derechos reservados. 2020</p>
+    </div>

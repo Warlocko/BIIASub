@@ -23,7 +23,19 @@ import { AdminBrokersComponent } from './components/admin-brokers/admin-brokers.
 import { AdminAcademiasComponent } from './components/admin-academias/admin-academias.component';
 import { AdminQuestionsComponent } from './components/admin-questions/admin-questions.component';
 import { FileDropDirective } from '../app/directives/file-drop.directive';
-import { AppearDirective } from './directives/appear.directive'
+import { AppearDirective } from './directives/appear.directive';
+import { TermsComponent } from './components/terms/terms.component';
+import { ConditionsComponent } from './components/conditions/conditions.component';
+import { AprendeComponent } from './components/aprende/aprende.component'
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { InvierteComponent } from './components/invierte/invierte.component';
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
 
 @NgModule({
   declarations: [
@@ -44,16 +56,24 @@ import { AppearDirective } from './directives/appear.directive'
     AdminAcademiasComponent,
     AdminQuestionsComponent,
     FileDropDirective,
-    AppearDirective
+    AppearDirective,
+    TermsComponent,
+    ConditionsComponent,
+    AprendeComponent,
+    InvierteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    SwiperModule
   ],
-  providers: [FirestoreAdminService],
+  providers: [FirestoreAdminService, {
+    provide: SWIPER_CONFIG,
+    useValue: DEFAULT_SWIPER_CONFIG
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

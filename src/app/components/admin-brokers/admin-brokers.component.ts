@@ -13,6 +13,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class AdminBrokersComponent implements OnInit {
   public brokerList;
+  brokerFiltered
   currentUpload: Upload;
   showCreateBroker:boolean = false;
   showEditBroker:boolean = false;
@@ -31,7 +32,16 @@ export class AdminBrokersComponent implements OnInit {
   ngOnInit(): void {
     this.afs.getBrokers().subscribe(res => {
       this.brokerList = res
+      this.brokerFiltered = res
     })
+  }
+
+  filterList(searchTerm:string){
+    this.brokerFiltered = this.brokerList.filter(function (el) {
+      var name:string = el.name;
+      var lowerName = name.toLowerCase()
+      return lowerName.includes(searchTerm.toLowerCase())
+    });
   }
 
   handleDrop(fileList){

@@ -1,7 +1,8 @@
 .signupBG{
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    min-height: 820px;
     opacity: .4;
     z-index: 0;
 }
@@ -94,26 +95,42 @@ input{
     font-size: 14px;
     text-decoration: underline;
     margin-top: 20px;
-    margin-bottom: 180px;
+    margin-bottom: 30px;
     z-index: 1;
     cursor: pointer;   
-}
-
-.rightsText{
-    position: absolute;
-    bottom: 35px;
-}
-
-.termsText{
-    position: absolute;
-    bottom: 75px;
 }
 
 .loginBtn{
     width: 100%;
     color: white;
     border: none;
-    padding: 20px 0;
+    padding: 15px 0;
     border-radius: 5px;
     font-family: 'Roboto', monospace;
+}
+
+#bottom-text{
+    position: relative;
+    text-align: center;
+    width: 30%;
+}
+
+.termsText{
+    margin-bottom: 15px;
+}
+
+.errorText{
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+}
+
+@media only screen and (max-width: 650px){
+    .inputContainer, .mailInputContainer{
+        width: calc(80% - 90px);
+    }
+
+    #bottom-text{
+        width: 80%;
+    }
 }

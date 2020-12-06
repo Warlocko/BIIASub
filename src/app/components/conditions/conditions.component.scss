@@ -1,0 +1,22 @@
+.aviso-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.aviso-title{
+    margin: 30px 0px;
+    padding: 0 20px;
+    font-size: 40px;
+    width: calc(100% - 40px);
+    text-align: center;
+}
+
+.aviso-text{
+    font-size: 16px;
+    padding: 20px;
+    width: calc(80% - 40px);
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5em;
+}

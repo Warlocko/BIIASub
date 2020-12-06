@@ -12,6 +12,10 @@ export class LandingPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  hasAppearedNavbar(){
+    document.getElementsByClassName('navbar')[0].classList.add('appearedNavbar')
+  }
+
   hasAppearedGuacamaya(){
     document.getElementsByClassName('animal-text-container')[0].classList.add('appearedText')
     document.getElementById('guacamayaImg').classList.add('appearedImg')

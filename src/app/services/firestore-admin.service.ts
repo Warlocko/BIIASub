@@ -279,7 +279,8 @@ export class FirestoreAdminService {
   }
 
   getReembolsosFiltered(id){
-    var reembolsoCollection = this.firestore.collection<any>('reembolsos', ref => ref.where('userID','==',id) && ref.where('pending','==',true));
+    var reembolsoCollection = this.firestore.collection<any>('reembolsos', ref => ref.where('userID','==',id));
+    var reembolsoPending = this.firestore.collection<any>('reembolsos', ref => ref.where('pending','==',true));
     var reembolsoList = reembolsoCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -289,6 +290,16 @@ export class FirestoreAdminService {
         });
       })
     )
+    var reembolsoPendingList = reembolsoPending.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    )
+    //reembolsoList.filter(value => reembolsoPendingList.includes(value))
     return reembolsoList
   }
 

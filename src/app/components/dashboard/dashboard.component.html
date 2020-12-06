@@ -6,32 +6,32 @@
     <div id="cash-containers">
         <div class="ganancia-display" id="ganancia-disp">
             <a class="info-ganancia smallText" (click)="toggleReembolsoModal()"><i class="fas fa-dollar-sign"></i>Solicitar un Reembolso</a>
-            <p class="normalText ganancia-text">$<span class="bigText bold">{{gDisp}}</span><br><span class="smallText mediumGreyText">Ganancia Disponible</span></p>
+            <p class="normalText ganancia-text">$<span class="bigText bold">{{gDisp | number}}</span><br><span class="smallText mediumGreyText">Ganancia Disponible</span></p>
         </div>
         <div class="ganancia-display" id="ganancia-pen">
-            <p class="normalText ganancia-text">$<span class="bigText bold">{{gPen}}</span><br><span class="smallText mediumGreyText">Ganancia Pendiente</span></p>
+            <p class="normalText ganancia-text">$<span class="bigText bold">{{gPen | number}}</span><br><span class="smallText mediumGreyText">Ganancia Pendiente</span></p>
         </div>
         <div class="ganancia-display" id="ganancia-tot">
-            <p class="normalText ganancia-text">$<span class="bigText bold">{{gTot}}</span><br><span class="smallText mediumGreyText">Ganancia Total</span></p>
+            <p class="normalText ganancia-text">$<span class="bigText bold">{{gTot | number}}</span><br><span class="smallText mediumGreyText">Ganancia Total</span></p>
         </div>
     </div>
     <div id="lower-info">
         <div id="reembolsos-container">
             <div class="lower-info-header">
-                <p class="lower-info-title bold">Reembolsos</p>
+                <p class="lower-info-title bold">Pagos</p>
             </div>
             <div class="table-wrapper">
                 <div class="table-title">
-                    <p class="mediumGreyText">Broker</p>
                     <p class="mediumGreyText">Cuenta</p>
-                    <p class="mediumGreyText">Reembolso</p>
-                    <p class="mediumGreyText">Tiempo de Petición</p>
+                    <p class="mediumGreyText">Ganancia Previa</p>
+                    <p class="mediumGreyText">Ganancia Nueva</p>
+                    <p class="mediumGreyText">Tiempo de Pago</p>
                 </div>
-                <div class="table-row" *ngFor="let reembolso of reembolsoList">
-                    <p class=""><img [src]="reembolso.brokerPath" class="table-img">{{reembolso.broker}}</p>
-                    <p class="">{{reembolso.accountRef}}</p>
-                    <p class="">$ {{reembolso.amount}}</p>
-                    <p class="">{{reembolso.time}}</p>
+                <div class="table-row" *ngFor="let pago of pagosList">
+                    <p>{{pago.userRef}}</p>
+                    <p>$ {{pago.userBalancePrev}}</p>
+                    <p>$ {{pago.userBalanceNew}}</p>
+                    <p>{{pago.time}}</p>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
             <div class="cuentas-info">
                 <div class="cuenta" *ngFor="let account of accountList">
                     <div class="smallText"><img [src]="account.brokerPath" class="cuenta-img"><p><b>{{account.broker}}</b><br>{{account.accountID}}</p></div>
-                    <p class="smallText" *ngIf="account.isActive">$<span class="cuenta-number">{{account.balance}}</span><br><span class="mediumGreyText">Ganancia</span></p>
+                    <p class="smallText" *ngIf="account.isActive">$<span class="cuenta-number">{{account.balance | number}}</span><br><span class="mediumGreyText">Ganancia</span></p>
                     <p class="smallText mediumGreyText" *ngIf="!account.isActive">$ <span class="cuenta-number">{{account.balance}}</span><br><span class="orangeText">Esperando Aprobación</span></p>
                 </div>
             </div>

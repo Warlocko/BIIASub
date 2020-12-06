@@ -30,15 +30,14 @@ export class DashboardComponent implements OnInit {
   gPen:number = 0;
   gTot:number = 0;
   noPaypal:boolean;
-  accountList: account[];
-  reembolsoList
+  accountList: account[] = [];
+  reembolsoList = []
+  pagosList = []
   account;
   showReembolsoModal: boolean = false;
   confirmation
 
   constructor(public firebaseAuth : AngularFireAuth, private router:Router, private userService: UserService, private afs: FirestoreAdminService) { 
-      
-    
   }
 
   ngOnInit(): void {
@@ -51,20 +50,32 @@ export class DashboardComponent implements OnInit {
       })
       this.afs.getAccountsFiltered(user.uid).subscribe((res:account[]) => {
         this.accountList = res
-        this.gDisp = this.accountList.map(a => a.balance).reduce(function(a, b)
+        if(this.accountList.length > 0){
+          this.gDisp = this.accountList.map(a => a.balance).reduce(function(a, b)
         {
           return a + b;
         });
+        }else{
+          this.gDisp = 0
+        }
         this.gTot = this.gDisp + this.gPen
       })
       this.afs.getReembolsosFiltered(user.uid).subscribe(res => {
         this.reembolsoList = res.sort( this.compare )
-        console.log()
-        this.gPen = this.reembolsoList.map(a => a.amount).reduce(function(a, b)
+        if(this.reembolsoList.length>0){
+          console.log(res)
+          var reembolsoFiltered = res.filter(pago => pago.pending)
+          this.gPen = reembolsoFiltered.map(a => a.amount).reduce(function(a, b)
         {
           return a + b;
         });
+        }else{
+          this.gPen = 0
+        }
         this.gTot = this.gDisp + this.gPen
+      })
+      this.afs.getPagosFiltered(user.uid).subscribe(res => {
+        this.pagosList = res
       })
     })
   }

@@ -3,12 +3,12 @@
     <div class="academias-searchbar-container">
         <a class="lightGreenText bold add-academia" (click)="toggleForm()">Añadir Academia +</a>
         <div class="academias-searchbar">
-            <input type=text placeholder="Buscar Academia">
+            <input type=text placeholder="Buscar Academia" #search (keyup)="filterList(search.value)">
             <i class="fas fa-search"></i>
         </div>
     </div>
     <div class="academias-container">
-        <div class="academia" *ngFor="let academia of academiaList">
+        <div class="academia" *ngFor="let academia of academiaFiltered">
             <img [src]="academia.path" class="academia-img">
             <p class="academia-name bold">{{academia.name}}</p>
             <p class="academia-plans smallText">{{academia.planNumber}} Planes</p>

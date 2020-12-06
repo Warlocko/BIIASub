@@ -258,6 +258,11 @@
     border-radius: 10px;
     overflow: hidden;
     position: relative;
+    margin-bottom: 30px;
+}
+
+.table-img{
+    margin-right: 20px;
 }
 
 .table-title{
@@ -278,6 +283,6 @@
 .table-title p, .table-row p{
     display: flex;
     align-items: center;
-    width: 25%;
+    width: 20%;
     font-size: 14px;
 }

@@ -154,6 +154,7 @@ app-login{
     justify-content: center;
     align-items: center;
     height: 100vh;
+    min-height: 720px;
 }
 
 app-signup{
@@ -161,6 +162,7 @@ app-signup{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 720px;
     height: 100vh;
 }
 
@@ -195,4 +197,39 @@ button{
 
 a{
     cursor: pointer;
+}
+
+.swiper-container{
+    overflow: visible !important;
+}
+
+.swiper-slide{
+    overflow: visible !important;
+}
+
+.swiper-button-prev{
+    left: -50px !important;
+    color: $light-green !important;
+    cursor: pointer !important;
+}
+
+.swiper-button-next{
+    right: -50px !important;
+    color: $light-green !important;
+    cursor: pointer !important;
+}
+
+.swiper-container-horizontal > .swiper-pagination-bullets{
+    bottom: -50px !important;
+
+}
+
+.swiper-pagination-bullet-active{
+    background: $light-green !important;
+}
+
+@media only screen and (max-width: 1000px){
+    .swiper-wrapper{
+        width: 100% !important;
+    }
 }

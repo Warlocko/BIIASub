@@ -30,4 +30,11 @@ export class NavbarComponent implements OnInit {
     })
   }
 
+  onLogout(){
+    this.firebaseAuth.signOut().then(() =>{
+        this.router.navigate(['login'])
+      }
+    )
+  }
+
 }

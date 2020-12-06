@@ -13,14 +13,12 @@
         <div class="info">
             <p class="info-name smallText">Email:</p>
             <p class="info-text">{{email}}</p>
-            <!--<i class="far fa-edit"></i>-->
         </div>
         <div class="info">
             <p class="info-name smallText">Contraseña:</p>
             <p class="info-text">***************</p>
-            <!--<i class="far fa-edit"></i>-->
+            <i class="far fa-edit" (click)='resetPassword()'></i>
         </div>
-        <!--<button class="profile-info-save lightGreenBackground smallText bold">Guardar</button>-->
     </div>
     <div class="profile-subtitle">
         <p class="bold">Cuenta de Pagos</p>
@@ -31,23 +29,24 @@
         <p class="lightGreenText paypal-change" (click)="togglePaypal()">Cambiar</p>
     </div>
     <div class="profile-subtitle">
-        <p class="bold">Pagos</p>
+        <p class="bold">Reembolsos</p>
     </div>
     <div class="table-wrapper">
         <div class="table-title">
+            <p class="mediumGreyText">Broker</p>
             <p class="mediumGreyText">Cuenta</p>
-            <p class="mediumGreyText">Ganancia Previa</p>
-            <p class="mediumGreyText">Ganancia Nueva</p>
+            <p class="mediumGreyText">Reembolso</p>
+            <p class="mediumGreyText">Tiempo de Petición</p>
             <p class="mediumGreyText">Tiempo de Pago</p>
         </div>
-        <div class="table-row" *ngFor="let pago of pagoList">
-            <p>{{pago.userRef}}</p>
-            <p>$ {{pago.userBalancePrev}}</p>
-            <p>$ {{pago.userBalanceNew}}</p>
-            <p>{{pago.time}}</p>
+        <div class="table-row" *ngFor="let reembolso of reembolsoList">
+            <p class=""><img [src]="reembolso.brokerPath" class="table-img">{{reembolso.broker}}</p>
+            <p class="">{{reembolso.accountRef}}</p>
+            <p class="">$ {{reembolso.amount}}</p>
+            <p class="">{{reembolso.time}}</p>
+            <p class="">{{reembolso.closeTime}}</p>
         </div>
     </div>
-    <button (click)="onLogout()" class="text14 bold logoutBtn lightGreenBackground">Cerrar Sesión</button>
 </div>
 <div class="modal" *ngIf="showPaypalModal">
     <div class="modal-background"  (click)="togglePaypal()">
@@ -68,7 +67,7 @@
                 <div class="paypal-input">
                     <input type="text" placeholder="paypal.me/biia" #paypalAccount name="paypalAccount" id="paypalAccount" class="bold">
                     <div class="smallText paypal-terms">
-                        <div id="paypal-checkbox" (click)="toggleCheckBox()"></div><p style="color:rgba(255, 255, 255, 0.7)">Acepto los <span class="bold" style="color: white;">Términos y condiciones</span></p>
+                        <div id="paypal-checkbox" (click)="toggleCheckBox()"></div><p style="color:rgba(255, 255, 255, 0.7)">Acepto los <a class="bold" style="color: white;" routerLink="/terminos" target="_blank">Términos y condiciones</a></p>
                     </div>
                 </div>
                 <button class="text14 bold paypal-btn lightGreenBackground" id="paypal-save" (click)="savePaypal(paypalAccount.value)" disabled>Guardar Link de Paypal</button>

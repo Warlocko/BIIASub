@@ -23,6 +23,7 @@ export interface plan{
 })
 export class AdminAcademiasComponent implements OnInit {
   public academiaList;
+  public academiaFiltered;
 
   public planList: Observable<plan[]>;
   private planCollection: AngularFirestoreCollection<plan>
@@ -58,6 +59,7 @@ export class AdminAcademiasComponent implements OnInit {
   ngOnInit(): void {
     this.afs.getAcademias().subscribe(res => {
         this.academiaList = res
+        this.academiaFiltered = res
       }
     )
   }
@@ -162,6 +164,13 @@ export class AdminAcademiasComponent implements OnInit {
       this.firestore.collection('academias').doc(academia_ID).update({planNumber: snap.size})
     })
     this.showEditPlan = !this.showEditPlan
+  }
+
+  filterList(searchTerm:string){
+    this.academiaFiltered = this.academiaList.filter(function (el) {
+      var name:string = el.name;
+      return name.toLowerCase().includes(searchTerm.toLowerCase())
+    });
   }
 
 
